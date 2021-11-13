@@ -25,8 +25,11 @@ namespace ImageViewer
             // ドライブ一覧を走査してツリーに追加
             reloadFileTreeView(Environment.GetLogicalDrives());
 
+            // カレントディレクトリを保存先パスに初期設定
+            this.saveDirTextBox.Text = Environment.CurrentDirectory;
+
             // XXX : Debug
-//            reloadFileTreeView(new string[] { @"C:\work" });
+            //reloadFileTreeView(new string[] { @"C:\work" });
 
         }
 
@@ -214,13 +217,14 @@ namespace ImageViewer
             PictureBox pic = new PictureBox();
             // pic.BackColor = Color.Transparent;
             pic.Location = new Point(0, 0);
+            pic.Text = ((PictureBox)sender).Text;
             pic.Size = new System.Drawing.Size(this.Size.Width, this.Size.Height);
             pic.MouseClick += fullPictureBox_MouseClick;
 
             // 画像ファイルの読み込み
             Bitmap canvas = new Bitmap(pic.Width, pic.Height);
             Graphics g = Graphics.FromImage(canvas);
-            Image img = Image.FromFile(((PictureBox)sender).Text);
+            Image img = Image.FromFile(pic.Text);
 
             // 補間方法として高品質双三次補間を指定する
             g.InterpolationMode =
@@ -257,11 +261,33 @@ namespace ImageViewer
 
             // 画像を最前面に表示
             pic.BringToFront();
+
+            // ピクチャーBOXに右クリックメニューを設定
+            ContextMenuStrip cmenu = new ContextMenuStrip();
+            ToolStripMenuItem cmenuItem = new ToolStripMenuItem();
+            cmenuItem.Text = "保存";
+            cmenuItem.Click += fullPictureBox_Menu_Save;
+            cmenu.Items.Add(cmenuItem);
+            pic.ContextMenuStrip = cmenu;
+
         }
 
         private void fullPictureBox_MouseClick(Object sender, MouseEventArgs e)
         {
-            this.Controls.Remove(((PictureBox)sender));
+            if (e.Button == MouseButtons.Left) {
+                this.Controls.Remove(((PictureBox)sender));
+            }
+        }
+
+        private void fullPictureBox_Menu_Save(object sender, EventArgs e)
+        {
+            ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
+            ContextMenuStrip menu = (ContextMenuStrip)menuItem.Owner;
+            PictureBox pic = (PictureBox)menu.SourceControl;
+
+            DateTime dt = DateTime.Now;
+            String ext = Path.GetExtension(pic.Text);
+            File.Copy(pic.Text, this.saveDirTextBox.Text + "\\" + dt.ToString("yyyyMMddHHmmssfff") + ext);
         }
     }
 }
