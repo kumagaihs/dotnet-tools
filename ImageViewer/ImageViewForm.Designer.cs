@@ -34,13 +34,13 @@ namespace ImageViewer
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
             this.baseDirTextBox = new System.Windows.Forms.TextBox();
             this.baseDirResetButton = new System.Windows.Forms.Button();
+            this.saveDirTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.picHeightLabel = new System.Windows.Forms.Label();
             this.picWidthLabel = new System.Windows.Forms.Label();
             this.picHeightTextBox = new System.Windows.Forms.TextBox();
             this.picWidthTextBox = new System.Windows.Forms.TextBox();
             this.thumbnailPanel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.saveDirTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
@@ -52,9 +52,9 @@ namespace ImageViewer
             this.fileTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileTreeView.Location = new System.Drawing.Point(0, 30);
+            this.fileTreeView.Location = new System.Drawing.Point(0, 21);
             this.fileTreeView.Name = "fileTreeView";
-            this.fileTreeView.Size = new System.Drawing.Size(203, 428);
+            this.fileTreeView.Size = new System.Drawing.Size(203, 437);
             this.fileTreeView.TabIndex = 0;
             this.fileTreeView.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.fileTreeBiew_BeforeExpand);
             this.fileTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.fileTreeView_AfterSelect);
@@ -93,9 +93,9 @@ namespace ImageViewer
             this.baseDirTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.baseDirTextBox.Location = new System.Drawing.Point(0, 0);
-            this.baseDirTextBox.MinimumSize = new System.Drawing.Size(4, 30);
+            this.baseDirTextBox.MinimumSize = new System.Drawing.Size(4, 19);
             this.baseDirTextBox.Name = "baseDirTextBox";
-            this.baseDirTextBox.Size = new System.Drawing.Size(148, 30);
+            this.baseDirTextBox.Size = new System.Drawing.Size(148, 19);
             this.baseDirTextBox.TabIndex = 2;
             // 
             // baseDirResetButton
@@ -103,16 +103,35 @@ namespace ImageViewer
             this.baseDirResetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.baseDirResetButton.Location = new System.Drawing.Point(149, 0);
             this.baseDirResetButton.Name = "baseDirResetButton";
-            this.baseDirResetButton.Size = new System.Drawing.Size(53, 30);
+            this.baseDirResetButton.Size = new System.Drawing.Size(53, 19);
             this.baseDirResetButton.TabIndex = 1;
             this.baseDirResetButton.Text = "reload";
             this.baseDirResetButton.UseVisualStyleBackColor = true;
             this.baseDirResetButton.Click += new System.EventHandler(this.baseDirResetButton_Click);
             // 
+            // saveDirTextBox
+            // 
+            this.saveDirTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveDirTextBox.Location = new System.Drawing.Point(267, 0);
+            this.saveDirTextBox.MinimumSize = new System.Drawing.Size(4, 19);
+            this.saveDirTextBox.Name = "saveDirTextBox";
+            this.saveDirTextBox.Size = new System.Drawing.Size(364, 19);
+            this.saveDirTextBox.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(220, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "保存先";
+            // 
             // picHeightLabel
             // 
             this.picHeightLabel.AutoSize = true;
-            this.picHeightLabel.Location = new System.Drawing.Point(105, 9);
+            this.picHeightLabel.Location = new System.Drawing.Point(105, 3);
             this.picHeightLabel.Name = "picHeightLabel";
             this.picHeightLabel.Size = new System.Drawing.Size(38, 12);
             this.picHeightLabel.TabIndex = 3;
@@ -121,7 +140,7 @@ namespace ImageViewer
             // picWidthLabel
             // 
             this.picWidthLabel.AutoSize = true;
-            this.picWidthLabel.Location = new System.Drawing.Point(3, 9);
+            this.picWidthLabel.Location = new System.Drawing.Point(3, 3);
             this.picWidthLabel.Name = "picWidthLabel";
             this.picWidthLabel.Size = new System.Drawing.Size(33, 12);
             this.picWidthLabel.TabIndex = 3;
@@ -130,7 +149,7 @@ namespace ImageViewer
             // picHeightTextBox
             // 
             this.picHeightTextBox.Location = new System.Drawing.Point(149, 0);
-            this.picHeightTextBox.MinimumSize = new System.Drawing.Size(4, 30);
+            this.picHeightTextBox.MinimumSize = new System.Drawing.Size(4, 19);
             this.picHeightTextBox.Name = "picHeightTextBox";
             this.picHeightTextBox.Size = new System.Drawing.Size(49, 19);
             this.picHeightTextBox.TabIndex = 2;
@@ -138,7 +157,7 @@ namespace ImageViewer
             // picWidthTextBox
             // 
             this.picWidthTextBox.Location = new System.Drawing.Point(41, 0);
-            this.picWidthTextBox.MinimumSize = new System.Drawing.Size(4, 30);
+            this.picWidthTextBox.MinimumSize = new System.Drawing.Size(4, 19);
             this.picWidthTextBox.Name = "picWidthTextBox";
             this.picWidthTextBox.Size = new System.Drawing.Size(49, 19);
             this.picWidthTextBox.TabIndex = 2;
@@ -150,29 +169,10 @@ namespace ImageViewer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.thumbnailPanel.AutoScroll = true;
             this.thumbnailPanel.BackColor = System.Drawing.Color.White;
-            this.thumbnailPanel.Location = new System.Drawing.Point(0, 30);
+            this.thumbnailPanel.Location = new System.Drawing.Point(0, 21);
             this.thumbnailPanel.Name = "thumbnailPanel";
-            this.thumbnailPanel.Size = new System.Drawing.Size(631, 428);
+            this.thumbnailPanel.Size = new System.Drawing.Size(631, 437);
             this.thumbnailPanel.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(220, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "保存先";
-            // 
-            // saveDirTextBox
-            // 
-            this.saveDirTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveDirTextBox.Location = new System.Drawing.Point(267, 0);
-            this.saveDirTextBox.MinimumSize = new System.Drawing.Size(4, 30);
-            this.saveDirTextBox.Name = "saveDirTextBox";
-            this.saveDirTextBox.Size = new System.Drawing.Size(364, 30);
-            this.saveDirTextBox.TabIndex = 2;
             // 
             // ImageView
             // 

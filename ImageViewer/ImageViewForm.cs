@@ -14,6 +14,11 @@ namespace ImageViewer
 {
     public partial class ImageView : Form
     {
+        /// <summary>
+        /// ピクチャーBOXの右クリックメニュー
+        /// </summary>
+        private ContextMenuStrip picMenu;
+
         public ImageView()
         {
             InitializeComponent();
@@ -31,6 +36,12 @@ namespace ImageViewer
             // XXX : Debug
             //reloadFileTreeView(new string[] { @"C:\work" });
 
+            // ピクチャーBOXの右クリックメニュー
+            this.picMenu = new ContextMenuStrip();
+            ToolStripMenuItem cmenuItem = new ToolStripMenuItem();
+            cmenuItem.Text = "保存";
+            cmenuItem.Click += fullPictureBox_Menu_Save;
+            picMenu.Items.Add(cmenuItem);
         }
 
         /// <summary>
@@ -207,6 +218,9 @@ namespace ImageViewer
                 // pic.Image = new System.Drawing.Bitmap(file);
                 pic.Image = canvas;
 
+                // ピクチャーBOXに右クリックメニューを設定
+                pic.ContextMenuStrip = this.picMenu;
+
                 return pic;
             }
         }
@@ -218,7 +232,7 @@ namespace ImageViewer
             // pic.BackColor = Color.Transparent;
             pic.Location = new Point(0, 0);
             pic.Text = ((PictureBox)sender).Text;
-            pic.Size = new System.Drawing.Size(this.Size.Width, this.Size.Height);
+            pic.Size = new System.Drawing.Size(this.ClientSize.Width, this.ClientSize.Height);
             pic.MouseClick += fullPictureBox_MouseClick;
 
             // 画像ファイルの読み込み
@@ -263,12 +277,7 @@ namespace ImageViewer
             pic.BringToFront();
 
             // ピクチャーBOXに右クリックメニューを設定
-            ContextMenuStrip cmenu = new ContextMenuStrip();
-            ToolStripMenuItem cmenuItem = new ToolStripMenuItem();
-            cmenuItem.Text = "保存";
-            cmenuItem.Click += fullPictureBox_Menu_Save;
-            cmenu.Items.Add(cmenuItem);
-            pic.ContextMenuStrip = cmenu;
+            pic.ContextMenuStrip = this.picMenu;
 
         }
 
