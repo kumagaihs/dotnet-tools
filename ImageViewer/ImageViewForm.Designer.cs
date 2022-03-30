@@ -58,7 +58,6 @@ namespace ImageViewer
             this.fileTreeView.TabIndex = 0;
             this.fileTreeView.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.fileTreeBiew_BeforeExpand);
             this.fileTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.fileTreeView_AfterSelect);
-            this.fileTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.fileTreeView1_NodeMouseClick);
             // 
             // mainSplitContainer
             // 
@@ -96,7 +95,7 @@ namespace ImageViewer
             this.baseDirTextBox.MinimumSize = new System.Drawing.Size(4, 19);
             this.baseDirTextBox.Name = "baseDirTextBox";
             this.baseDirTextBox.Size = new System.Drawing.Size(148, 19);
-            this.baseDirTextBox.TabIndex = 2;
+            this.baseDirTextBox.TabIndex = 1;
             // 
             // baseDirResetButton
             // 
@@ -104,7 +103,7 @@ namespace ImageViewer
             this.baseDirResetButton.Location = new System.Drawing.Point(149, 0);
             this.baseDirResetButton.Name = "baseDirResetButton";
             this.baseDirResetButton.Size = new System.Drawing.Size(53, 19);
-            this.baseDirResetButton.TabIndex = 1;
+            this.baseDirResetButton.TabIndex = 2;
             this.baseDirResetButton.Text = "reload";
             this.baseDirResetButton.UseVisualStyleBackColor = true;
             this.baseDirResetButton.Click += new System.EventHandler(this.baseDirResetButton_Click);
@@ -117,7 +116,7 @@ namespace ImageViewer
             this.saveDirTextBox.MinimumSize = new System.Drawing.Size(4, 19);
             this.saveDirTextBox.Name = "saveDirTextBox";
             this.saveDirTextBox.Size = new System.Drawing.Size(364, 19);
-            this.saveDirTextBox.TabIndex = 2;
+            this.saveDirTextBox.TabIndex = 5;
             // 
             // label1
             // 
@@ -152,7 +151,7 @@ namespace ImageViewer
             this.picHeightTextBox.MinimumSize = new System.Drawing.Size(4, 19);
             this.picHeightTextBox.Name = "picHeightTextBox";
             this.picHeightTextBox.Size = new System.Drawing.Size(49, 19);
-            this.picHeightTextBox.TabIndex = 2;
+            this.picHeightTextBox.TabIndex = 4;
             // 
             // picWidthTextBox
             // 
@@ -160,7 +159,7 @@ namespace ImageViewer
             this.picWidthTextBox.MinimumSize = new System.Drawing.Size(4, 19);
             this.picWidthTextBox.Name = "picWidthTextBox";
             this.picWidthTextBox.Size = new System.Drawing.Size(49, 19);
-            this.picWidthTextBox.TabIndex = 2;
+            this.picWidthTextBox.TabIndex = 3;
             // 
             // thumbnailPanel
             // 

@@ -19,6 +19,14 @@ namespace ImageViewer
         /// </summary>
         private ContextMenuStrip picMenu;
 
+        /// <summary>
+        /// 現在ツリービューで選択されているディレクトリ
+        /// </summary>
+        private string nowSelectedTreeViewDir;
+
+        /// <summary>
+        /// 初期化処理
+        /// </summary>
         public ImageView()
         {
             InitializeComponent();
@@ -92,25 +100,37 @@ namespace ImageViewer
 
         }
 
-        private void fileTreeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        /// <summary>
+        /// ツリービューでディレクトリが選択された時の処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void fileTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             reloadThumbnail(e.Node.FullPath);
         }
 
-        private void fileTreeView_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// ツリービューのベースディレクトリreloadボタン押下時の処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void baseDirResetButton_Click(object sender, EventArgs e)
         {
             reloadFileTreeView(new String[] { baseDirTextBox.Text });
         }
 
+        /// <summary>
+        /// サムネイルのリロード処理
+        /// </summary>
+        /// <param name="dir"></param>
         private void reloadThumbnail(String dir)
         {
             // サムネイルペインをクリア
             thumbnailPanel.Controls.Clear();
+
+            // 処理中ディレクトリの更新
+            this.nowSelectedTreeViewDir = dir;
 
             // ファイル一覧取得
             List<String> files = Directory.GetFiles(dir).ToList<String>();
@@ -125,6 +145,12 @@ namespace ImageViewer
                 int row = 0;
                 foreach (String file in files) {
                     try {
+                        if (nowSelectedTreeViewDir != dir)
+                        {
+                            // ツリービューで別のディレクトリが選択された場合は処理を中断
+                            break;
+                        }
+
                         PictureBox pic = createPictureBox(file, col * (thumWidth + marginX), row * (thumHeight + marginY), thumWidth, thumHeight);
                         Invoke(new Action(() =>
                         {
@@ -147,8 +173,20 @@ namespace ImageViewer
             });
         }
 
+        /// <summary>
+        /// サムネイル画像の生成処理がバッティングしない様に制御するロックオブジェクト
+        /// </summary>
         private Object lockObject = new Object();
 
+        /// <summary>
+        /// サムネイル画像を１つ作成する
+        /// </summary>
+        /// <param name="file">サムネイルを作る画像ファイルのパス</param>
+        /// <param name="x">サムネイル画像を表示する位置（横）</param>
+        /// <param name="y">サムネイル画像を表示する位置（横）</param>
+        /// <param name="width">サムネイル画像の幅</param>
+        /// <param name="height">サムネイル画像の高さ</param>
+        /// <returns>サムネイル画像のPictureBoxオブジェクト</returns>
         private PictureBox createPictureBox(String file, int x, int y, int width, int height)
         {
             lock (lockObject)
@@ -171,8 +209,9 @@ namespace ImageViewer
 
                 // サムネイル画像サイズに合わせて縮小する
                 Rectangle srcRect = new Rectangle(0, 0, pic.Width, pic.Height);
-                // 縦長の画像
-                if (img.Width < img.Height)
+
+                // 縦長の画像 もしくは 正方形の画像でサムネイルが横長の場合
+                if ((img.Width < img.Height) || (img.Width == img.Height && pic.Height < pic.Width))
                 {
                     // 横幅を基準にサイズ合わせした場合の高さを算出
                     int resizeHeight = (int)(img.Height * ((double)pic.Width / (double)img.Width));
@@ -189,8 +228,8 @@ namespace ImageViewer
                         img.Height - (over)
                     );
                 }
-                // 横長の画像
-                else if (img.Height < img.Width)
+                // 横長の画像 もしくは 正方形の画像でサムネイルが縦長か正方形の場合
+                else
                 {
                     // 高さを基準にサイズ合わせした場合の横幅を算出
                     int resizeWidth = (int)(img.Width * ((double)pic.Height / (double)img.Height));
@@ -225,6 +264,11 @@ namespace ImageViewer
             }
         }
 
+        /// <summary>
+        /// サムネイル画像クリック時の処理。拡大画像を表示する。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void thumbnalePictureBox_MouseClick(Object sender, MouseEventArgs e)
         {
             // PictureBoxの生成
