@@ -127,6 +127,13 @@ namespace ImageViewer
         private void reloadThumbnail(String dir)
         {
             // サムネイルペインをクリア
+            for (int i = 0; i < thumbnailPanel.Controls.Count; i++) {
+                PictureBox pic = (PictureBox)thumbnailPanel.Controls[i];
+                if (pic.Image != null) {
+                    pic.Image.Dispose();
+                }
+                pic.Dispose();
+            }
             thumbnailPanel.Controls.Clear();
 
             // 処理中ディレクトリの更新
