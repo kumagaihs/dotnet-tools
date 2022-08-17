@@ -161,6 +161,11 @@ namespace ImageViewer
                         PictureBox pic = createPictureBox(file, col * (thumWidth + marginX), row * (thumHeight + marginY), thumWidth, thumHeight);
                         Invoke(new Action(() =>
                         {
+                            // スクロール分ずれてパネルに配置されてしまうので、スクロール分の位置補正を行う。
+                            Point adjust = pic.Location;
+                            adjust.Offset(-thumbnailPanel.HorizontalScroll.Value, -thumbnailPanel.VerticalScroll.Value);
+                            pic.Location = adjust;
+
                             thumbnailPanel.Controls.Add(pic);
                         }));
                     }
