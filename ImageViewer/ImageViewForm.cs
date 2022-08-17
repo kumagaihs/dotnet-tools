@@ -132,7 +132,9 @@ namespace ImageViewer
                 if (pic.Image != null) {
                     pic.Image.Dispose();
                 }
+                pic.MouseClick -= thumbnalePictureBox_MouseClick;
                 pic.Dispose();
+                thumbnailPanel.Controls.Remove(pic);
             }
             thumbnailPanel.Controls.Clear();
 
@@ -141,6 +143,12 @@ namespace ImageViewer
 
             // ファイル一覧取得
             List<String> files = Directory.GetFiles(dir).ToList<String>();
+            if (false) {
+                // TODO:画面から指定できるようにする。
+                // ファイル一覧をシャッフル
+                Random rand = new Random();
+                files = files.OrderBy(_ => rand.Next()).ToList();
+            }
 
             // サムネイル表示
             Task task = Task.Run(() => {
