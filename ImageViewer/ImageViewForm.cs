@@ -116,6 +116,18 @@ namespace ImageViewer
         }
 
         /// <summary>
+        /// ツリービューのベースディレクトリTextBoxのキー押下
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void baseDirTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) {
+                reloadFileTreeView(new String[] { baseDirTextBox.Text });
+            }
+        }
+
+        /// <summary>
         /// サムネイルのリロード処理
         /// </summary>
         /// <param name="dir"></param>
@@ -391,5 +403,6 @@ namespace ImageViewer
                 thumbnailSettingOpenButton.Text = "閉じる/Close";
             }
         }
+
     }
 }

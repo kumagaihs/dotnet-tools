@@ -92,6 +92,7 @@ namespace ImageViewer
             this.baseDirTextBox.Name = "baseDirTextBox";
             this.baseDirTextBox.Size = new System.Drawing.Size(146, 19);
             this.baseDirTextBox.TabIndex = 1;
+            this.baseDirTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.baseDirTextBox_KeyDown);
             // 
             // baseDirResetButton
             // 
