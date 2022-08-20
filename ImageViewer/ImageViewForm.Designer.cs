@@ -52,7 +52,7 @@ namespace ImageViewer
             this.fileTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileTreeView.Location = new System.Drawing.Point(0, 21);
+            this.fileTreeView.Location = new System.Drawing.Point(0, 24);
             this.fileTreeView.Name = "fileTreeView";
             this.fileTreeView.Size = new System.Drawing.Size(203, 437);
             this.fileTreeView.TabIndex = 0;
@@ -91,16 +91,16 @@ namespace ImageViewer
             // 
             this.baseDirTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.baseDirTextBox.Location = new System.Drawing.Point(0, 0);
+            this.baseDirTextBox.Location = new System.Drawing.Point(2, 2);
             this.baseDirTextBox.MinimumSize = new System.Drawing.Size(4, 19);
             this.baseDirTextBox.Name = "baseDirTextBox";
-            this.baseDirTextBox.Size = new System.Drawing.Size(148, 19);
+            this.baseDirTextBox.Size = new System.Drawing.Size(146, 19);
             this.baseDirTextBox.TabIndex = 1;
             // 
             // baseDirResetButton
             // 
             this.baseDirResetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.baseDirResetButton.Location = new System.Drawing.Point(149, 0);
+            this.baseDirResetButton.Location = new System.Drawing.Point(149, 2);
             this.baseDirResetButton.Name = "baseDirResetButton";
             this.baseDirResetButton.Size = new System.Drawing.Size(53, 19);
             this.baseDirResetButton.TabIndex = 2;
@@ -112,16 +112,16 @@ namespace ImageViewer
             // 
             this.saveDirTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveDirTextBox.Location = new System.Drawing.Point(267, 0);
+            this.saveDirTextBox.Location = new System.Drawing.Point(267, 2);
             this.saveDirTextBox.MinimumSize = new System.Drawing.Size(4, 19);
             this.saveDirTextBox.Name = "saveDirTextBox";
-            this.saveDirTextBox.Size = new System.Drawing.Size(364, 19);
+            this.saveDirTextBox.Size = new System.Drawing.Size(362, 19);
             this.saveDirTextBox.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(220, 3);
+            this.label1.Location = new System.Drawing.Point(220, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 3;
@@ -130,7 +130,7 @@ namespace ImageViewer
             // picHeightLabel
             // 
             this.picHeightLabel.AutoSize = true;
-            this.picHeightLabel.Location = new System.Drawing.Point(105, 3);
+            this.picHeightLabel.Location = new System.Drawing.Point(105, 5);
             this.picHeightLabel.Name = "picHeightLabel";
             this.picHeightLabel.Size = new System.Drawing.Size(38, 12);
             this.picHeightLabel.TabIndex = 3;
@@ -139,7 +139,7 @@ namespace ImageViewer
             // picWidthLabel
             // 
             this.picWidthLabel.AutoSize = true;
-            this.picWidthLabel.Location = new System.Drawing.Point(3, 3);
+            this.picWidthLabel.Location = new System.Drawing.Point(3, 5);
             this.picWidthLabel.Name = "picWidthLabel";
             this.picWidthLabel.Size = new System.Drawing.Size(33, 12);
             this.picWidthLabel.TabIndex = 3;
@@ -147,7 +147,7 @@ namespace ImageViewer
             // 
             // picHeightTextBox
             // 
-            this.picHeightTextBox.Location = new System.Drawing.Point(149, 0);
+            this.picHeightTextBox.Location = new System.Drawing.Point(149, 2);
             this.picHeightTextBox.MinimumSize = new System.Drawing.Size(4, 19);
             this.picHeightTextBox.Name = "picHeightTextBox";
             this.picHeightTextBox.Size = new System.Drawing.Size(49, 19);
@@ -155,7 +155,7 @@ namespace ImageViewer
             // 
             // picWidthTextBox
             // 
-            this.picWidthTextBox.Location = new System.Drawing.Point(41, 0);
+            this.picWidthTextBox.Location = new System.Drawing.Point(41, 2);
             this.picWidthTextBox.MinimumSize = new System.Drawing.Size(4, 19);
             this.picWidthTextBox.Name = "picWidthTextBox";
             this.picWidthTextBox.Size = new System.Drawing.Size(49, 19);
@@ -168,7 +168,7 @@ namespace ImageViewer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.thumbnailPanel.AutoScroll = true;
             this.thumbnailPanel.BackColor = System.Drawing.Color.White;
-            this.thumbnailPanel.Location = new System.Drawing.Point(0, 21);
+            this.thumbnailPanel.Location = new System.Drawing.Point(0, 24);
             this.thumbnailPanel.Name = "thumbnailPanel";
             this.thumbnailPanel.Size = new System.Drawing.Size(631, 437);
             this.thumbnailPanel.TabIndex = 0;

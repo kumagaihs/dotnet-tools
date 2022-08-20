@@ -27,8 +27,8 @@ namespace ImageViewer
             InitializeComponent();
 
             // サムネイルサイズを設定
-            picWidthTextBox.Text = "200";
-            picHeightTextBox.Text = "200";
+            picWidthTextBox.Text = "150";
+            picHeightTextBox.Text = "150";
 
             // ドライブ一覧を走査してツリーに追加
             reloadFileTreeView(Environment.GetLogicalDrives());
@@ -168,7 +168,7 @@ namespace ImageViewer
                     }
                     catch (Exception e)
                     {
-                        // Do nothing.
+                        continue;
                     }
 
                     if (((col + 2) * (thumWidth + marginX)) > thumbnailPanel.Width) {
