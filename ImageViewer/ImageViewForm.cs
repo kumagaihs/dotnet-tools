@@ -19,6 +19,8 @@ namespace ImageViewer
         /// </summary>
         private string nowSelectedTreeViewDir;
 
+        private Color thumbnailBgColor;
+
         /// <summary>
         /// 初期化処理
         /// </summary>
@@ -29,6 +31,8 @@ namespace ImageViewer
             // サムネイルサイズを設定
             picWidthTextBox.Text = "150";
             picHeightTextBox.Text = "150";
+            // サムネイルの背景色を設定
+            setThumbnailBgColor(Color.White);
 
             // ドライブ一覧を走査してツリーに追加
             reloadFileTreeView(Environment.GetLogicalDrives());
@@ -360,6 +364,55 @@ namespace ImageViewer
             DateTime dt = DateTime.Now;
             String ext = Path.GetExtension(pic.Text);
             File.Copy(pic.Text, this.saveDirTextBox.Text + "\\" + dt.ToString("yyyyMMddHHmmssfff") + ext);
+        }
+
+        /// <summary>
+        /// BG Colorボタン押下イベント
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void thumbnailBgColorButton_Click(object sender, EventArgs e)
+        {
+            //ColorDialogクラスのインスタンスを作成
+            ColorDialog cd = new ColorDialog();
+
+            //はじめに選択されている色を設定
+            cd.Color = this.thumbnailBgColor;
+            //色の作成部分を表示可能にする
+            //デフォルトがTrueのため必要はない
+            cd.AllowFullOpen = true;
+            //純色だけに制限しない
+            //デフォルトがFalseのため必要はない
+            cd.SolidColorOnly = false;
+            //[作成した色]に指定した色（RGB値）を表示する
+            cd.CustomColors = new int[] {
+                0x33, 0x66, 0x99, 0xCC, 0x3300, 0x3333,
+                0x3366, 0x3399, 0x33CC, 0x6600, 0x6633,
+                0x6666, 0x6699, 0x66CC, 0x9900, 0x9933
+            };
+
+            //ダイアログを表示する
+            if (cd.ShowDialog() == DialogResult.OK) {
+                //選択された色に設定する
+                setThumbnailBgColor(cd.Color);
+            }
+        }
+
+        /// <summary>
+        /// サムネイルペインの背景色を変更する
+        /// </summary>
+        /// <param name="newColor"></param>
+        private void setThumbnailBgColor(Color newColor)
+        {
+            this.thumbnailBgColor = newColor;
+
+            // 色設定ボタンの背景色設定
+            this.thumbnailBgColorButton.BackColor = this.thumbnailBgColor;
+            // 色設定ボタンの文字色を反転色にする
+            this.thumbnailBgColorButton.ForeColor = Color.FromArgb(this.thumbnailBgColor.ToArgb() ^ 0xFFFFFF);
+
+            // サムネイルエリアの背景色を設定
+            this.thumbnailPanel.BackColor = this.thumbnailBgColor;
         }
     }
 }

@@ -41,6 +41,7 @@ namespace ImageViewer
             this.picHeightTextBox = new System.Windows.Forms.TextBox();
             this.picWidthTextBox = new System.Windows.Forms.TextBox();
             this.thumbnailPanel = new System.Windows.Forms.Panel();
+            this.thumbnailBgColorButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
@@ -76,6 +77,7 @@ namespace ImageViewer
             // 
             // mainSplitContainer.Panel2
             // 
+            this.mainSplitContainer.Panel2.Controls.Add(this.thumbnailBgColorButton);
             this.mainSplitContainer.Panel2.Controls.Add(this.saveDirTextBox);
             this.mainSplitContainer.Panel2.Controls.Add(this.label1);
             this.mainSplitContainer.Panel2.Controls.Add(this.picHeightLabel);
@@ -100,9 +102,9 @@ namespace ImageViewer
             // baseDirResetButton
             // 
             this.baseDirResetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.baseDirResetButton.Location = new System.Drawing.Point(149, 2);
+            this.baseDirResetButton.Location = new System.Drawing.Point(149, 1);
             this.baseDirResetButton.Name = "baseDirResetButton";
-            this.baseDirResetButton.Size = new System.Drawing.Size(53, 19);
+            this.baseDirResetButton.Size = new System.Drawing.Size(53, 21);
             this.baseDirResetButton.TabIndex = 2;
             this.baseDirResetButton.Text = "reload";
             this.baseDirResetButton.UseVisualStyleBackColor = true;
@@ -112,16 +114,16 @@ namespace ImageViewer
             // 
             this.saveDirTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveDirTextBox.Location = new System.Drawing.Point(267, 2);
+            this.saveDirTextBox.Location = new System.Drawing.Point(521, 2);
             this.saveDirTextBox.MinimumSize = new System.Drawing.Size(4, 19);
             this.saveDirTextBox.Name = "saveDirTextBox";
-            this.saveDirTextBox.Size = new System.Drawing.Size(362, 19);
+            this.saveDirTextBox.Size = new System.Drawing.Size(108, 19);
             this.saveDirTextBox.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(220, 5);
+            this.label1.Location = new System.Drawing.Point(474, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 3;
@@ -130,7 +132,7 @@ namespace ImageViewer
             // picHeightLabel
             // 
             this.picHeightLabel.AutoSize = true;
-            this.picHeightLabel.Location = new System.Drawing.Point(105, 5);
+            this.picHeightLabel.Location = new System.Drawing.Point(97, 5);
             this.picHeightLabel.Name = "picHeightLabel";
             this.picHeightLabel.Size = new System.Drawing.Size(38, 12);
             this.picHeightLabel.TabIndex = 3;
@@ -147,7 +149,7 @@ namespace ImageViewer
             // 
             // picHeightTextBox
             // 
-            this.picHeightTextBox.Location = new System.Drawing.Point(149, 2);
+            this.picHeightTextBox.Location = new System.Drawing.Point(141, 2);
             this.picHeightTextBox.MinimumSize = new System.Drawing.Size(4, 19);
             this.picHeightTextBox.Name = "picHeightTextBox";
             this.picHeightTextBox.Size = new System.Drawing.Size(49, 19);
@@ -172,6 +174,17 @@ namespace ImageViewer
             this.thumbnailPanel.Name = "thumbnailPanel";
             this.thumbnailPanel.Size = new System.Drawing.Size(631, 437);
             this.thumbnailPanel.TabIndex = 0;
+            // 
+            // thumbnailBgColorButton
+            // 
+            this.thumbnailBgColorButton.BackColor = System.Drawing.SystemColors.Control;
+            this.thumbnailBgColorButton.Location = new System.Drawing.Point(204, 1);
+            this.thumbnailBgColorButton.Name = "thumbnailBgColorButton";
+            this.thumbnailBgColorButton.Size = new System.Drawing.Size(62, 21);
+            this.thumbnailBgColorButton.TabIndex = 6;
+            this.thumbnailBgColorButton.Text = "BG Color";
+            this.thumbnailBgColorButton.UseVisualStyleBackColor = false;
+            this.thumbnailBgColorButton.Click += new System.EventHandler(this.thumbnailBgColorButton_Click);
             // 
             // ImageView
             // 
@@ -205,6 +218,7 @@ namespace ImageViewer
         private System.Windows.Forms.TextBox picWidthTextBox;
         private System.Windows.Forms.TextBox saveDirTextBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button thumbnailBgColorButton;
     }
 }
 
