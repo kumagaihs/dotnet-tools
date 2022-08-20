@@ -42,6 +42,8 @@ namespace ImageViewer
             this.picWidthTextBox = new System.Windows.Forms.TextBox();
             this.thumbnailPanel = new System.Windows.Forms.Panel();
             this.thumbnailBgColorButton = new System.Windows.Forms.Button();
+            this.picMarginLabel = new System.Windows.Forms.Label();
+            this.picMarginTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
@@ -77,6 +79,8 @@ namespace ImageViewer
             // 
             // mainSplitContainer.Panel2
             // 
+            this.mainSplitContainer.Panel2.Controls.Add(this.picMarginTextBox);
+            this.mainSplitContainer.Panel2.Controls.Add(this.picMarginLabel);
             this.mainSplitContainer.Panel2.Controls.Add(this.thumbnailBgColorButton);
             this.mainSplitContainer.Panel2.Controls.Add(this.saveDirTextBox);
             this.mainSplitContainer.Panel2.Controls.Add(this.label1);
@@ -132,7 +136,7 @@ namespace ImageViewer
             // picHeightLabel
             // 
             this.picHeightLabel.AutoSize = true;
-            this.picHeightLabel.Location = new System.Drawing.Point(97, 5);
+            this.picHeightLabel.Location = new System.Drawing.Point(88, 5);
             this.picHeightLabel.Name = "picHeightLabel";
             this.picHeightLabel.Size = new System.Drawing.Size(38, 12);
             this.picHeightLabel.TabIndex = 3;
@@ -149,10 +153,10 @@ namespace ImageViewer
             // 
             // picHeightTextBox
             // 
-            this.picHeightTextBox.Location = new System.Drawing.Point(141, 2);
+            this.picHeightTextBox.Location = new System.Drawing.Point(132, 2);
             this.picHeightTextBox.MinimumSize = new System.Drawing.Size(4, 19);
             this.picHeightTextBox.Name = "picHeightTextBox";
-            this.picHeightTextBox.Size = new System.Drawing.Size(49, 19);
+            this.picHeightTextBox.Size = new System.Drawing.Size(36, 19);
             this.picHeightTextBox.TabIndex = 4;
             // 
             // picWidthTextBox
@@ -160,7 +164,7 @@ namespace ImageViewer
             this.picWidthTextBox.Location = new System.Drawing.Point(41, 2);
             this.picWidthTextBox.MinimumSize = new System.Drawing.Size(4, 19);
             this.picWidthTextBox.Name = "picWidthTextBox";
-            this.picWidthTextBox.Size = new System.Drawing.Size(49, 19);
+            this.picWidthTextBox.Size = new System.Drawing.Size(36, 19);
             this.picWidthTextBox.TabIndex = 3;
             // 
             // thumbnailPanel
@@ -178,13 +182,29 @@ namespace ImageViewer
             // thumbnailBgColorButton
             // 
             this.thumbnailBgColorButton.BackColor = System.Drawing.SystemColors.Control;
-            this.thumbnailBgColorButton.Location = new System.Drawing.Point(204, 1);
+            this.thumbnailBgColorButton.Location = new System.Drawing.Point(263, 1);
             this.thumbnailBgColorButton.Name = "thumbnailBgColorButton";
             this.thumbnailBgColorButton.Size = new System.Drawing.Size(62, 21);
             this.thumbnailBgColorButton.TabIndex = 6;
             this.thumbnailBgColorButton.Text = "BG Color";
             this.thumbnailBgColorButton.UseVisualStyleBackColor = false;
             this.thumbnailBgColorButton.Click += new System.EventHandler(this.thumbnailBgColorButton_Click);
+            // 
+            // picMarginLabel
+            // 
+            this.picMarginLabel.AutoSize = true;
+            this.picMarginLabel.Location = new System.Drawing.Point(178, 5);
+            this.picMarginLabel.Name = "picMarginLabel";
+            this.picMarginLabel.Size = new System.Drawing.Size(39, 12);
+            this.picMarginLabel.TabIndex = 7;
+            this.picMarginLabel.Text = "Margin";
+            // 
+            // picMarginTextBox
+            // 
+            this.picMarginTextBox.Location = new System.Drawing.Point(224, 2);
+            this.picMarginTextBox.Name = "picMarginTextBox";
+            this.picMarginTextBox.Size = new System.Drawing.Size(24, 19);
+            this.picMarginTextBox.TabIndex = 8;
             // 
             // ImageView
             // 
@@ -219,6 +239,8 @@ namespace ImageViewer
         private System.Windows.Forms.TextBox saveDirTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button thumbnailBgColorButton;
+        private System.Windows.Forms.TextBox picMarginTextBox;
+        private System.Windows.Forms.Label picMarginLabel;
     }
 }
 

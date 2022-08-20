@@ -31,6 +31,7 @@ namespace ImageViewer
             // サムネイルサイズを設定
             picWidthTextBox.Text = "150";
             picHeightTextBox.Text = "150";
+            picMarginTextBox.Text = "1";
             // サムネイルの背景色を設定
             setThumbnailBgColor(Color.White);
 
@@ -147,8 +148,8 @@ namespace ImageViewer
             Task task = Task.Run(() => {
                 int thumWidth = int.Parse(picWidthTextBox.Text);
                 int thumHeight = int.Parse(picHeightTextBox.Text);
-                int marginX = 1;
-                int marginY = 1;
+                int marginX = int.Parse(picMarginTextBox.Text);
+                int marginY = int.Parse(picMarginTextBox.Text);
                 int col = 0;
                 int row = 0;
                 foreach (String file in files) {
