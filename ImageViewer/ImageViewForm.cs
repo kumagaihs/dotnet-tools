@@ -19,8 +19,6 @@ namespace ImageViewer
         /// </summary>
         private string nowSelectedTreeViewDir;
 
-        private Color thumbnailBgColor;
-
         /// <summary>
         /// 初期化処理
         /// </summary>
@@ -28,12 +26,15 @@ namespace ImageViewer
         {
             InitializeComponent();
 
-            // サムネイルサイズを設定
-            picWidthTextBox.Text = "150";
-            picHeightTextBox.Text = "150";
-            picMarginTextBox.Text = "1";
-            // サムネイルの背景色を設定
-            setThumbnailBgColor(Color.White);
+            Settings.ThumbnailPanelSettings thumbnailSettings = Settings.getInstance().thumbnailPanelSettings;
+
+            // サムネイルパネルの設定を初期化
+            thumbnailSettings.width = 150;
+            thumbnailSettings.height = 150;
+            thumbnailSettings.margin = 1;
+            thumbnailSettings.backgroundColor = Color.White;
+            thumbnailSettings.shuffle = false;
+            reloadThumbnail(null);
 
             // ドライブ一覧を走査してツリーに追加
             reloadFileTreeView(Environment.GetLogicalDrives());
@@ -120,6 +121,11 @@ namespace ImageViewer
         /// <param name="dir"></param>
         private void reloadThumbnail(String dir)
         {
+            Settings.ThumbnailPanelSettings thumbnailSettings = Settings.getInstance().thumbnailPanelSettings;
+
+            // サムネイルの背景色を設定
+            this.thumbnailPanel.BackColor = thumbnailSettings.backgroundColor;
+
             // サムネイルペインをクリア
             for (int i = 0; i < thumbnailPanel.Controls.Count; i++) {
                 PictureBox pic = (PictureBox)thumbnailPanel.Controls[i];
@@ -132,12 +138,16 @@ namespace ImageViewer
             }
             thumbnailPanel.Controls.Clear();
 
+            if (dir == null) {
+                return;
+            }
+
             // 処理中ディレクトリの更新
             this.nowSelectedTreeViewDir = dir;
 
             // ファイル一覧取得
             List<String> files = Directory.GetFiles(dir).ToList<String>();
-            if (picShuffleCheckBox.Checked) {
+            if (thumbnailSettings.shuffle) {
                 // ファイル一覧をシャッフル
                 Random rand = new Random();
                 files = files.OrderBy(_ => rand.Next()).ToList();
@@ -145,10 +155,10 @@ namespace ImageViewer
 
             // サムネイル表示
             Task task = Task.Run(() => {
-                int thumWidth = int.Parse(picWidthTextBox.Text);
-                int thumHeight = int.Parse(picHeightTextBox.Text);
-                int marginX = int.Parse(picMarginTextBox.Text);
-                int marginY = int.Parse(picMarginTextBox.Text);
+                int thumWidth = thumbnailSettings.width;
+                int thumHeight = thumbnailSettings.height;
+                int marginX = thumbnailSettings.margin;
+                int marginY = thumbnailSettings.margin;
                 int col = 0;
                 int row = 0;
                 foreach (String file in files) {
@@ -366,53 +376,20 @@ namespace ImageViewer
             File.Copy(pic.Text, this.saveDirTextBox.Text + "\\" + dt.ToString("yyyyMMddHHmmssfff") + ext);
         }
 
-        /// <summary>
-        /// BG Colorボタン押下イベント
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void thumbnailBgColorButton_Click(object sender, EventArgs e)
+        private void ThumbnailSettingOpenButton_Click(object sender, EventArgs e)
         {
-            //ColorDialogクラスのインスタンスを作成
-            ColorDialog cd = new ColorDialog();
+            if (thumbnailPanelSettingControl.Visible) {
+                thumbnailPanelSettingControl.Visible = false;
+                thumbnailSettingOpenButton.Text = "設定/Settings";
 
-            //はじめに選択されている色を設定
-            cd.Color = this.thumbnailBgColor;
-            //色の作成部分を表示可能にする
-            //デフォルトがTrueのため必要はない
-            cd.AllowFullOpen = true;
-            //純色だけに制限しない
-            //デフォルトがFalseのため必要はない
-            cd.SolidColorOnly = false;
-            //[作成した色]に指定した色（RGB値）を表示する
-            cd.CustomColors = new int[] {
-                0x33, 0x66, 0x99, 0xCC, 0x3300, 0x3333,
-                0x3366, 0x3399, 0x33CC, 0x6600, 0x6633,
-                0x6666, 0x6699, 0x66CC, 0x9900, 0x9933
-            };
-
-            //ダイアログを表示する
-            if (cd.ShowDialog() == DialogResult.OK) {
-                //選択された色に設定する
-                setThumbnailBgColor(cd.Color);
+                // 変更された設定内容でサムネイルビューをリロード
+                thumbnailPanelSettingControl.UpdateSettings();
+                reloadThumbnail(nowSelectedTreeViewDir);
             }
-        }
-
-        /// <summary>
-        /// サムネイルペインの背景色を変更する
-        /// </summary>
-        /// <param name="newColor"></param>
-        private void setThumbnailBgColor(Color newColor)
-        {
-            this.thumbnailBgColor = newColor;
-
-            // 色設定ボタンの背景色設定
-            this.thumbnailBgColorButton.BackColor = this.thumbnailBgColor;
-            // 色設定ボタンの文字色を反転色にする
-            this.thumbnailBgColorButton.ForeColor = Color.FromArgb(this.thumbnailBgColor.ToArgb() ^ 0xFFFFFF);
-
-            // サムネイルエリアの背景色を設定
-            this.thumbnailPanel.BackColor = this.thumbnailBgColor;
+            else {
+                thumbnailPanelSettingControl.Visible = true;
+                thumbnailSettingOpenButton.Text = "閉じる/Close";
+            }
         }
     }
 }

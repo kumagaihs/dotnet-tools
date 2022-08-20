@@ -34,17 +34,11 @@ namespace ImageViewer
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
             this.baseDirTextBox = new System.Windows.Forms.TextBox();
             this.baseDirResetButton = new System.Windows.Forms.Button();
+            this.thumbnailSettingOpenButton = new System.Windows.Forms.Button();
+            this.thumbnailPanelSettingControl = new ImageViewer.ThumbnailPanelSettingControl();
             this.saveDirTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.picHeightLabel = new System.Windows.Forms.Label();
-            this.picWidthLabel = new System.Windows.Forms.Label();
-            this.picHeightTextBox = new System.Windows.Forms.TextBox();
-            this.picWidthTextBox = new System.Windows.Forms.TextBox();
             this.thumbnailPanel = new System.Windows.Forms.Panel();
-            this.thumbnailBgColorButton = new System.Windows.Forms.Button();
-            this.picMarginLabel = new System.Windows.Forms.Label();
-            this.picMarginTextBox = new System.Windows.Forms.TextBox();
-            this.picShuffleCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
@@ -80,16 +74,10 @@ namespace ImageViewer
             // 
             // mainSplitContainer.Panel2
             // 
-            this.mainSplitContainer.Panel2.Controls.Add(this.picShuffleCheckBox);
-            this.mainSplitContainer.Panel2.Controls.Add(this.picMarginTextBox);
-            this.mainSplitContainer.Panel2.Controls.Add(this.picMarginLabel);
-            this.mainSplitContainer.Panel2.Controls.Add(this.thumbnailBgColorButton);
+            this.mainSplitContainer.Panel2.Controls.Add(this.thumbnailSettingOpenButton);
+            this.mainSplitContainer.Panel2.Controls.Add(this.thumbnailPanelSettingControl);
             this.mainSplitContainer.Panel2.Controls.Add(this.saveDirTextBox);
             this.mainSplitContainer.Panel2.Controls.Add(this.label1);
-            this.mainSplitContainer.Panel2.Controls.Add(this.picHeightLabel);
-            this.mainSplitContainer.Panel2.Controls.Add(this.picWidthLabel);
-            this.mainSplitContainer.Panel2.Controls.Add(this.picHeightTextBox);
-            this.mainSplitContainer.Panel2.Controls.Add(this.picWidthTextBox);
             this.mainSplitContainer.Panel2.Controls.Add(this.thumbnailPanel);
             this.mainSplitContainer.Size = new System.Drawing.Size(842, 460);
             this.mainSplitContainer.SplitterDistance = 205;
@@ -116,58 +104,42 @@ namespace ImageViewer
             this.baseDirResetButton.UseVisualStyleBackColor = true;
             this.baseDirResetButton.Click += new System.EventHandler(this.baseDirResetButton_Click);
             // 
+            // thumbnailSettingOpenButton
+            // 
+            this.thumbnailSettingOpenButton.Location = new System.Drawing.Point(1, 1);
+            this.thumbnailSettingOpenButton.Name = "thumbnailSettingOpenButton";
+            this.thumbnailSettingOpenButton.Size = new System.Drawing.Size(107, 23);
+            this.thumbnailSettingOpenButton.TabIndex = 11;
+            this.thumbnailSettingOpenButton.Text = "設定/Settings";
+            this.thumbnailSettingOpenButton.UseVisualStyleBackColor = true;
+            this.thumbnailSettingOpenButton.Click += new System.EventHandler(this.ThumbnailSettingOpenButton_Click);
+            // 
+            // thumbnailPanelSettingControl
+            // 
+            this.thumbnailPanelSettingControl.Location = new System.Drawing.Point(0, 24);
+            this.thumbnailPanelSettingControl.Name = "thumbnailPanelSettingControl";
+            this.thumbnailPanelSettingControl.Size = new System.Drawing.Size(360, 400);
+            this.thumbnailPanelSettingControl.TabIndex = 10;
+            this.thumbnailPanelSettingControl.Visible = false;
+            // 
             // saveDirTextBox
             // 
             this.saveDirTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveDirTextBox.Location = new System.Drawing.Point(521, 2);
+            this.saveDirTextBox.Location = new System.Drawing.Point(325, 2);
             this.saveDirTextBox.MinimumSize = new System.Drawing.Size(4, 19);
             this.saveDirTextBox.Name = "saveDirTextBox";
-            this.saveDirTextBox.Size = new System.Drawing.Size(108, 19);
+            this.saveDirTextBox.Size = new System.Drawing.Size(304, 19);
             this.saveDirTextBox.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(474, 5);
+            this.label1.Location = new System.Drawing.Point(278, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 3;
             this.label1.Text = "保存先";
-            // 
-            // picHeightLabel
-            // 
-            this.picHeightLabel.AutoSize = true;
-            this.picHeightLabel.Location = new System.Drawing.Point(88, 5);
-            this.picHeightLabel.Name = "picHeightLabel";
-            this.picHeightLabel.Size = new System.Drawing.Size(38, 12);
-            this.picHeightLabel.TabIndex = 3;
-            this.picHeightLabel.Text = "Height";
-            // 
-            // picWidthLabel
-            // 
-            this.picWidthLabel.AutoSize = true;
-            this.picWidthLabel.Location = new System.Drawing.Point(3, 5);
-            this.picWidthLabel.Name = "picWidthLabel";
-            this.picWidthLabel.Size = new System.Drawing.Size(33, 12);
-            this.picWidthLabel.TabIndex = 3;
-            this.picWidthLabel.Text = "Width";
-            // 
-            // picHeightTextBox
-            // 
-            this.picHeightTextBox.Location = new System.Drawing.Point(132, 2);
-            this.picHeightTextBox.MinimumSize = new System.Drawing.Size(4, 19);
-            this.picHeightTextBox.Name = "picHeightTextBox";
-            this.picHeightTextBox.Size = new System.Drawing.Size(36, 19);
-            this.picHeightTextBox.TabIndex = 4;
-            // 
-            // picWidthTextBox
-            // 
-            this.picWidthTextBox.Location = new System.Drawing.Point(41, 2);
-            this.picWidthTextBox.MinimumSize = new System.Drawing.Size(4, 19);
-            this.picWidthTextBox.Name = "picWidthTextBox";
-            this.picWidthTextBox.Size = new System.Drawing.Size(36, 19);
-            this.picWidthTextBox.TabIndex = 3;
             // 
             // thumbnailPanel
             // 
@@ -180,43 +152,6 @@ namespace ImageViewer
             this.thumbnailPanel.Name = "thumbnailPanel";
             this.thumbnailPanel.Size = new System.Drawing.Size(631, 437);
             this.thumbnailPanel.TabIndex = 0;
-            // 
-            // thumbnailBgColorButton
-            // 
-            this.thumbnailBgColorButton.BackColor = System.Drawing.SystemColors.Control;
-            this.thumbnailBgColorButton.Location = new System.Drawing.Point(263, 1);
-            this.thumbnailBgColorButton.Name = "thumbnailBgColorButton";
-            this.thumbnailBgColorButton.Size = new System.Drawing.Size(62, 21);
-            this.thumbnailBgColorButton.TabIndex = 6;
-            this.thumbnailBgColorButton.Text = "BG Color";
-            this.thumbnailBgColorButton.UseVisualStyleBackColor = false;
-            this.thumbnailBgColorButton.Click += new System.EventHandler(this.thumbnailBgColorButton_Click);
-            // 
-            // picMarginLabel
-            // 
-            this.picMarginLabel.AutoSize = true;
-            this.picMarginLabel.Location = new System.Drawing.Point(178, 5);
-            this.picMarginLabel.Name = "picMarginLabel";
-            this.picMarginLabel.Size = new System.Drawing.Size(39, 12);
-            this.picMarginLabel.TabIndex = 7;
-            this.picMarginLabel.Text = "Margin";
-            // 
-            // picMarginTextBox
-            // 
-            this.picMarginTextBox.Location = new System.Drawing.Point(224, 2);
-            this.picMarginTextBox.Name = "picMarginTextBox";
-            this.picMarginTextBox.Size = new System.Drawing.Size(24, 19);
-            this.picMarginTextBox.TabIndex = 8;
-            // 
-            // picShuffleCheckBox
-            // 
-            this.picShuffleCheckBox.AutoSize = true;
-            this.picShuffleCheckBox.Location = new System.Drawing.Point(332, 4);
-            this.picShuffleCheckBox.Name = "picShuffleCheckBox";
-            this.picShuffleCheckBox.Size = new System.Drawing.Size(60, 16);
-            this.picShuffleCheckBox.TabIndex = 9;
-            this.picShuffleCheckBox.Text = "Shuffle";
-            this.picShuffleCheckBox.UseVisualStyleBackColor = true;
             // 
             // ImageView
             // 
@@ -244,16 +179,10 @@ namespace ImageViewer
         private System.Windows.Forms.Button baseDirResetButton;
         private System.Windows.Forms.TextBox baseDirTextBox;
         private System.Windows.Forms.Panel thumbnailPanel;
-        private System.Windows.Forms.Label picHeightLabel;
-        private System.Windows.Forms.Label picWidthLabel;
-        private System.Windows.Forms.TextBox picHeightTextBox;
-        private System.Windows.Forms.TextBox picWidthTextBox;
         private System.Windows.Forms.TextBox saveDirTextBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button thumbnailBgColorButton;
-        private System.Windows.Forms.TextBox picMarginTextBox;
-        private System.Windows.Forms.Label picMarginLabel;
-        private System.Windows.Forms.CheckBox picShuffleCheckBox;
+        private ThumbnailPanelSettingControl thumbnailPanelSettingControl;
+        private System.Windows.Forms.Button thumbnailSettingOpenButton;
     }
 }
 
