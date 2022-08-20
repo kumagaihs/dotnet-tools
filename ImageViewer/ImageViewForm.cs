@@ -15,11 +15,6 @@ namespace ImageViewer
     public partial class ImageView : Form
     {
         /// <summary>
-        /// ピクチャーBOXの右クリックメニュー
-        /// </summary>
-        private ContextMenuStrip picMenu;
-
-        /// <summary>
         /// 現在ツリービューで選択されているディレクトリ
         /// </summary>
         private string nowSelectedTreeViewDir;
@@ -44,12 +39,6 @@ namespace ImageViewer
             // XXX : Debug
             //reloadFileTreeView(new string[] { @"C:\work" });
 
-            // ピクチャーBOXの右クリックメニュー
-            this.picMenu = new ContextMenuStrip();
-            ToolStripMenuItem cmenuItem = new ToolStripMenuItem();
-            cmenuItem.Text = "保存";
-            cmenuItem.Click += fullPictureBox_Menu_Save;
-            picMenu.Items.Add(cmenuItem);
         }
 
         /// <summary>
@@ -278,7 +267,12 @@ namespace ImageViewer
                 pic.Image = canvas;
 
                 // ピクチャーBOXに右クリックメニューを設定
-                pic.ContextMenuStrip = this.picMenu;
+                ContextMenuStrip picMenu = new ContextMenuStrip();
+                ToolStripMenuItem cmenuItem = new ToolStripMenuItem();
+                cmenuItem.Text = "保存";
+                cmenuItem.Click += fullPictureBox_Menu_Save;
+                picMenu.Items.Add(cmenuItem);
+                pic.ContextMenuStrip = picMenu;
 
                 return pic;
             }
@@ -341,7 +335,12 @@ namespace ImageViewer
             pic.BringToFront();
 
             // ピクチャーBOXに右クリックメニューを設定
-            pic.ContextMenuStrip = this.picMenu;
+            ContextMenuStrip picMenu = new ContextMenuStrip();
+            ToolStripMenuItem cmenuItem = new ToolStripMenuItem();
+            cmenuItem.Text = "保存";
+            cmenuItem.Click += fullPictureBox_Menu_Save;
+            picMenu.Items.Add(cmenuItem);
+            pic.ContextMenuStrip = picMenu;
 
         }
 
