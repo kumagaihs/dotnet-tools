@@ -137,8 +137,7 @@ namespace ImageViewer
 
             // ファイル一覧取得
             List<String> files = Directory.GetFiles(dir).ToList<String>();
-            if (false) {
-                // TODO:画面から指定できるようにする。
+            if (picShuffleCheckBox.Checked) {
                 // ファイル一覧をシャッフル
                 Random rand = new Random();
                 files = files.OrderBy(_ => rand.Next()).ToList();

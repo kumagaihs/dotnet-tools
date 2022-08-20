@@ -44,6 +44,7 @@ namespace ImageViewer
             this.thumbnailBgColorButton = new System.Windows.Forms.Button();
             this.picMarginLabel = new System.Windows.Forms.Label();
             this.picMarginTextBox = new System.Windows.Forms.TextBox();
+            this.picShuffleCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
@@ -79,6 +80,7 @@ namespace ImageViewer
             // 
             // mainSplitContainer.Panel2
             // 
+            this.mainSplitContainer.Panel2.Controls.Add(this.picShuffleCheckBox);
             this.mainSplitContainer.Panel2.Controls.Add(this.picMarginTextBox);
             this.mainSplitContainer.Panel2.Controls.Add(this.picMarginLabel);
             this.mainSplitContainer.Panel2.Controls.Add(this.thumbnailBgColorButton);
@@ -206,6 +208,16 @@ namespace ImageViewer
             this.picMarginTextBox.Size = new System.Drawing.Size(24, 19);
             this.picMarginTextBox.TabIndex = 8;
             // 
+            // picShuffleCheckBox
+            // 
+            this.picShuffleCheckBox.AutoSize = true;
+            this.picShuffleCheckBox.Location = new System.Drawing.Point(332, 4);
+            this.picShuffleCheckBox.Name = "picShuffleCheckBox";
+            this.picShuffleCheckBox.Size = new System.Drawing.Size(60, 16);
+            this.picShuffleCheckBox.TabIndex = 9;
+            this.picShuffleCheckBox.Text = "Shuffle";
+            this.picShuffleCheckBox.UseVisualStyleBackColor = true;
+            // 
             // ImageView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -241,6 +253,7 @@ namespace ImageViewer
         private System.Windows.Forms.Button thumbnailBgColorButton;
         private System.Windows.Forms.TextBox picMarginTextBox;
         private System.Windows.Forms.Label picMarginLabel;
+        private System.Windows.Forms.CheckBox picShuffleCheckBox;
     }
 }
 
