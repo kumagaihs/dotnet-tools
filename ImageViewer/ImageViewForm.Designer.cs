@@ -33,12 +33,13 @@ namespace ImageViewer
             this.fileTreeView = new System.Windows.Forms.TreeView();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
             this.baseDirTextBox = new System.Windows.Forms.TextBox();
-            this.baseDirResetButton = new System.Windows.Forms.Button();
+            this.baseDirSelectButton = new System.Windows.Forms.Button();
             this.thumbnailSettingOpenButton = new System.Windows.Forms.Button();
-            this.thumbnailPanelSettingControl = new ImageViewer.ThumbnailPanelSettingControl();
             this.saveDirTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.saveDirLabel = new System.Windows.Forms.Label();
             this.thumbnailPanel = new System.Windows.Forms.Panel();
+            this.thumbnailPanelSettingControl = new ImageViewer.ThumbnailPanelSettingControl();
+            this.saveDirSelectButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
@@ -69,15 +70,16 @@ namespace ImageViewer
             // mainSplitContainer.Panel1
             // 
             this.mainSplitContainer.Panel1.Controls.Add(this.baseDirTextBox);
-            this.mainSplitContainer.Panel1.Controls.Add(this.baseDirResetButton);
+            this.mainSplitContainer.Panel1.Controls.Add(this.baseDirSelectButton);
             this.mainSplitContainer.Panel1.Controls.Add(this.fileTreeView);
             // 
             // mainSplitContainer.Panel2
             // 
             this.mainSplitContainer.Panel2.Controls.Add(this.thumbnailSettingOpenButton);
+            this.mainSplitContainer.Panel2.Controls.Add(this.saveDirSelectButton);
             this.mainSplitContainer.Panel2.Controls.Add(this.thumbnailPanelSettingControl);
             this.mainSplitContainer.Panel2.Controls.Add(this.saveDirTextBox);
-            this.mainSplitContainer.Panel2.Controls.Add(this.label1);
+            this.mainSplitContainer.Panel2.Controls.Add(this.saveDirLabel);
             this.mainSplitContainer.Panel2.Controls.Add(this.thumbnailPanel);
             this.mainSplitContainer.Size = new System.Drawing.Size(842, 460);
             this.mainSplitContainer.SplitterDistance = 205;
@@ -90,20 +92,20 @@ namespace ImageViewer
             this.baseDirTextBox.Location = new System.Drawing.Point(2, 2);
             this.baseDirTextBox.MinimumSize = new System.Drawing.Size(4, 19);
             this.baseDirTextBox.Name = "baseDirTextBox";
-            this.baseDirTextBox.Size = new System.Drawing.Size(146, 19);
+            this.baseDirTextBox.Size = new System.Drawing.Size(113, 19);
             this.baseDirTextBox.TabIndex = 1;
             this.baseDirTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.baseDirTextBox_KeyDown);
             // 
-            // baseDirResetButton
+            // baseDirSelectButton
             // 
-            this.baseDirResetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.baseDirResetButton.Location = new System.Drawing.Point(149, 1);
-            this.baseDirResetButton.Name = "baseDirResetButton";
-            this.baseDirResetButton.Size = new System.Drawing.Size(53, 21);
-            this.baseDirResetButton.TabIndex = 2;
-            this.baseDirResetButton.Text = "reload";
-            this.baseDirResetButton.UseVisualStyleBackColor = true;
-            this.baseDirResetButton.Click += new System.EventHandler(this.baseDirResetButton_Click);
+            this.baseDirSelectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.baseDirSelectButton.Location = new System.Drawing.Point(117, 1);
+            this.baseDirSelectButton.Name = "baseDirSelectButton";
+            this.baseDirSelectButton.Size = new System.Drawing.Size(85, 21);
+            this.baseDirSelectButton.TabIndex = 2;
+            this.baseDirSelectButton.Text = "参照/Select";
+            this.baseDirSelectButton.UseVisualStyleBackColor = true;
+            this.baseDirSelectButton.Click += new System.EventHandler(this.baseDirSelectButton_Click);
             // 
             // thumbnailSettingOpenButton
             // 
@@ -115,32 +117,24 @@ namespace ImageViewer
             this.thumbnailSettingOpenButton.UseVisualStyleBackColor = true;
             this.thumbnailSettingOpenButton.Click += new System.EventHandler(this.ThumbnailSettingOpenButton_Click);
             // 
-            // thumbnailPanelSettingControl
-            // 
-            this.thumbnailPanelSettingControl.Location = new System.Drawing.Point(0, 24);
-            this.thumbnailPanelSettingControl.Name = "thumbnailPanelSettingControl";
-            this.thumbnailPanelSettingControl.Size = new System.Drawing.Size(360, 400);
-            this.thumbnailPanelSettingControl.TabIndex = 10;
-            this.thumbnailPanelSettingControl.Visible = false;
-            // 
             // saveDirTextBox
             // 
             this.saveDirTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveDirTextBox.Location = new System.Drawing.Point(325, 2);
+            this.saveDirTextBox.Location = new System.Drawing.Point(326, 2);
             this.saveDirTextBox.MinimumSize = new System.Drawing.Size(4, 19);
             this.saveDirTextBox.Name = "saveDirTextBox";
-            this.saveDirTextBox.Size = new System.Drawing.Size(304, 19);
+            this.saveDirTextBox.Size = new System.Drawing.Size(216, 19);
             this.saveDirTextBox.TabIndex = 5;
             // 
-            // label1
+            // saveDirLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(278, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "保存先";
+            this.saveDirLabel.AutoSize = true;
+            this.saveDirLabel.Location = new System.Drawing.Point(234, 5);
+            this.saveDirLabel.Name = "saveDirLabel";
+            this.saveDirLabel.Size = new System.Drawing.Size(86, 12);
+            this.saveDirLabel.TabIndex = 3;
+            this.saveDirLabel.Text = "保存先/Save to";
             // 
             // thumbnailPanel
             // 
@@ -153,6 +147,25 @@ namespace ImageViewer
             this.thumbnailPanel.Name = "thumbnailPanel";
             this.thumbnailPanel.Size = new System.Drawing.Size(631, 437);
             this.thumbnailPanel.TabIndex = 0;
+            // 
+            // thumbnailPanelSettingControl
+            // 
+            this.thumbnailPanelSettingControl.Location = new System.Drawing.Point(0, 24);
+            this.thumbnailPanelSettingControl.Name = "thumbnailPanelSettingControl";
+            this.thumbnailPanelSettingControl.Size = new System.Drawing.Size(360, 400);
+            this.thumbnailPanelSettingControl.TabIndex = 10;
+            this.thumbnailPanelSettingControl.Visible = false;
+            // 
+            // saveDirSelectButton
+            // 
+            this.saveDirSelectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveDirSelectButton.Location = new System.Drawing.Point(544, 1);
+            this.saveDirSelectButton.Name = "saveDirSelectButton";
+            this.saveDirSelectButton.Size = new System.Drawing.Size(85, 21);
+            this.saveDirSelectButton.TabIndex = 2;
+            this.saveDirSelectButton.Text = "参照/Select";
+            this.saveDirSelectButton.UseVisualStyleBackColor = true;
+            this.saveDirSelectButton.Click += new System.EventHandler(this.saveDirSelectButton_Click);
             // 
             // ImageView
             // 
@@ -177,13 +190,14 @@ namespace ImageViewer
 
         private System.Windows.Forms.TreeView fileTreeView;
         private System.Windows.Forms.SplitContainer mainSplitContainer;
-        private System.Windows.Forms.Button baseDirResetButton;
+        private System.Windows.Forms.Button baseDirSelectButton;
         private System.Windows.Forms.TextBox baseDirTextBox;
         private System.Windows.Forms.Panel thumbnailPanel;
         private System.Windows.Forms.TextBox saveDirTextBox;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label saveDirLabel;
         private ThumbnailPanelSettingControl thumbnailPanelSettingControl;
         private System.Windows.Forms.Button thumbnailSettingOpenButton;
+        private System.Windows.Forms.Button saveDirSelectButton;
     }
 }
 

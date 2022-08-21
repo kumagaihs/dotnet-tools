@@ -110,9 +110,19 @@ namespace ImageViewer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void baseDirResetButton_Click(object sender, EventArgs e)
+        private void baseDirSelectButton_Click(object sender, EventArgs e)
         {
-            reloadFileTreeView(new String[] { baseDirTextBox.Text });
+            //Folder選択ダイアログを表示
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.Description = "表示するフォルダーを選択してください/Please select folder to view";
+            fbd.RootFolder = Environment.SpecialFolder.Desktop;
+            fbd.SelectedPath = @"C:";
+            fbd.ShowNewFolderButton = true;
+            if (fbd.ShowDialog(this) == DialogResult.OK) {
+                // 選択されたフォルダでリロードする
+                baseDirTextBox.Text = fbd.SelectedPath;
+                reloadFileTreeView(new String[] { baseDirTextBox.Text });
+            }
         }
 
         /// <summary>
@@ -123,7 +133,31 @@ namespace ImageViewer
         private void baseDirTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) {
-                reloadFileTreeView(new String[] { baseDirTextBox.Text });
+                if (baseDirTextBox.Text.Trim().Length == 0) {
+                    reloadFileTreeView(Environment.GetLogicalDrives());
+                }
+                else {
+                    reloadFileTreeView(new String[] { baseDirTextBox.Text });
+                }
+            }
+        }
+
+        /// <summary>
+        /// 保存先の選択ボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void saveDirSelectButton_Click(object sender, EventArgs e)
+        {
+            //Folder選択ダイアログを表示
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.Description = "表示するフォルダーを選択してください/Please select folder to view";
+            fbd.RootFolder = Environment.SpecialFolder.Desktop;
+            fbd.SelectedPath = saveDirTextBox.Text;
+            fbd.ShowNewFolderButton = true;
+            if (fbd.ShowDialog(this) == DialogResult.OK) {
+                // 選択されたフォルダを設定する
+                saveDirTextBox.Text = fbd.SelectedPath;
             }
         }
 
@@ -295,7 +329,7 @@ namespace ImageViewer
                 // ピクチャーBOXに右クリックメニューを設定
                 ContextMenuStrip picMenu = new ContextMenuStrip();
                 ToolStripMenuItem cmenuItem = new ToolStripMenuItem();
-                cmenuItem.Text = "保存";
+                cmenuItem.Text = "保存/Save";
                 cmenuItem.Click += fullPictureBox_Menu_Save;
                 picMenu.Items.Add(cmenuItem);
                 pic.ContextMenuStrip = picMenu;
@@ -363,7 +397,7 @@ namespace ImageViewer
             // ピクチャーBOXに右クリックメニューを設定
             ContextMenuStrip picMenu = new ContextMenuStrip();
             ToolStripMenuItem cmenuItem = new ToolStripMenuItem();
-            cmenuItem.Text = "保存";
+            cmenuItem.Text = "保存/Save";
             cmenuItem.Click += fullPictureBox_Menu_Save;
             picMenu.Items.Add(cmenuItem);
             pic.ContextMenuStrip = picMenu;
