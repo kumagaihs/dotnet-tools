@@ -38,8 +38,9 @@ namespace ImageViewer
             this.saveDirTextBox = new System.Windows.Forms.TextBox();
             this.saveDirLabel = new System.Windows.Forms.Label();
             this.thumbnailPanel = new System.Windows.Forms.Panel();
-            this.thumbnailPanelSettingControl = new ImageViewer.ThumbnailPanelSettingControl();
             this.saveDirSelectButton = new System.Windows.Forms.Button();
+            this.thumbnailPanelSettingControl = new ImageViewer.ThumbnailPanelSettingControl();
+            this.thumRefreshButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
@@ -75,6 +76,7 @@ namespace ImageViewer
             // 
             // mainSplitContainer.Panel2
             // 
+            this.mainSplitContainer.Panel2.Controls.Add(this.thumRefreshButton);
             this.mainSplitContainer.Panel2.Controls.Add(this.thumbnailSettingOpenButton);
             this.mainSplitContainer.Panel2.Controls.Add(this.saveDirSelectButton);
             this.mainSplitContainer.Panel2.Controls.Add(this.thumbnailPanelSettingControl);
@@ -148,14 +150,6 @@ namespace ImageViewer
             this.thumbnailPanel.Size = new System.Drawing.Size(631, 437);
             this.thumbnailPanel.TabIndex = 0;
             // 
-            // thumbnailPanelSettingControl
-            // 
-            this.thumbnailPanelSettingControl.Location = new System.Drawing.Point(0, 24);
-            this.thumbnailPanelSettingControl.Name = "thumbnailPanelSettingControl";
-            this.thumbnailPanelSettingControl.Size = new System.Drawing.Size(360, 400);
-            this.thumbnailPanelSettingControl.TabIndex = 10;
-            this.thumbnailPanelSettingControl.Visible = false;
-            // 
             // saveDirSelectButton
             // 
             this.saveDirSelectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -166,6 +160,24 @@ namespace ImageViewer
             this.saveDirSelectButton.Text = "参照/Select";
             this.saveDirSelectButton.UseVisualStyleBackColor = true;
             this.saveDirSelectButton.Click += new System.EventHandler(this.saveDirSelectButton_Click);
+            // 
+            // thumbnailPanelSettingControl
+            // 
+            this.thumbnailPanelSettingControl.Location = new System.Drawing.Point(0, 24);
+            this.thumbnailPanelSettingControl.Name = "thumbnailPanelSettingControl";
+            this.thumbnailPanelSettingControl.Size = new System.Drawing.Size(360, 400);
+            this.thumbnailPanelSettingControl.TabIndex = 10;
+            this.thumbnailPanelSettingControl.Visible = false;
+            // 
+            // thumRefreshButton
+            // 
+            this.thumRefreshButton.Image = ((System.Drawing.Image)(resources.GetObject("thumRefreshButton.Image")));
+            this.thumRefreshButton.Location = new System.Drawing.Point(115, 1);
+            this.thumRefreshButton.Name = "thumRefreshButton";
+            this.thumRefreshButton.Size = new System.Drawing.Size(24, 23);
+            this.thumRefreshButton.TabIndex = 13;
+            this.thumRefreshButton.UseVisualStyleBackColor = true;
+            this.thumRefreshButton.Click += new System.EventHandler(this.thumRefreshButton_Click);
             // 
             // ImageView
             // 
@@ -198,6 +210,7 @@ namespace ImageViewer
         private ThumbnailPanelSettingControl thumbnailPanelSettingControl;
         private System.Windows.Forms.Button thumbnailSettingOpenButton;
         private System.Windows.Forms.Button saveDirSelectButton;
+        private System.Windows.Forms.Button thumRefreshButton;
     }
 }
 

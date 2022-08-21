@@ -142,6 +142,28 @@ namespace ImageViewer
             }
         }
 
+        private void ThumbnailSettingOpenButton_Click(object sender, EventArgs e)
+        {
+            if (thumbnailPanelSettingControl.Visible) {
+                thumbnailPanelSettingControl.Visible = false;
+                thumbnailSettingOpenButton.Text = "設定/Settings";
+
+                // 変更された設定内容でサムネイルビューをリロード
+                thumbnailPanelSettingControl.UpdateSettings();
+                reloadThumbnail(nowSelectedTreeViewDir);
+            }
+            else {
+                thumbnailPanelSettingControl.Visible = true;
+                thumbnailSettingOpenButton.Text = "閉じる/Close";
+            }
+        }
+
+        private void thumRefreshButton_Click(object sender, EventArgs e)
+        {
+            // サムネイルビューをリロード
+            reloadThumbnail(nowSelectedTreeViewDir);
+        }
+
         /// <summary>
         /// 保存先の選択ボタン
         /// </summary>
@@ -420,22 +442,6 @@ namespace ImageViewer
             DateTime dt = DateTime.Now;
             String ext = Path.GetExtension(pic.Text);
             File.Copy(pic.Text, this.saveDirTextBox.Text + "\\" + dt.ToString("yyyyMMddHHmmssfff") + ext);
-        }
-
-        private void ThumbnailSettingOpenButton_Click(object sender, EventArgs e)
-        {
-            if (thumbnailPanelSettingControl.Visible) {
-                thumbnailPanelSettingControl.Visible = false;
-                thumbnailSettingOpenButton.Text = "設定/Settings";
-
-                // 変更された設定内容でサムネイルビューをリロード
-                thumbnailPanelSettingControl.UpdateSettings();
-                reloadThumbnail(nowSelectedTreeViewDir);
-            }
-            else {
-                thumbnailPanelSettingControl.Visible = true;
-                thumbnailSettingOpenButton.Text = "閉じる/Close";
-            }
         }
 
     }
