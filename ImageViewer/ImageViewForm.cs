@@ -26,17 +26,22 @@ namespace ImageViewer
         {
             InitializeComponent();
 
-            Settings.ThumbnailPanelSettings thumbnailSettings = Settings.getInstance().thumbnailPanelSettings;
+            // 設定ファイルのロード
+            if ( ! Settings.loadSettings()) {
+                // 設定ファイルがない場合はデフォルト値を設定
+                Settings.ThumbnailPanelSettings thumbnailSettings = Settings.getInstance().thumbnailPanelSettings;
 
-            // サムネイルパネルの設定を初期化
-            thumbnailSettings.width = 150;
-            thumbnailSettings.height = 150;
-            thumbnailSettings.margin = 1;
-            thumbnailSettings.backgroundColor = Color.White;
-            thumbnailSettings.maxCount = 1000;
-            thumbnailSettings.subFolderSearch = false;
-            thumbnailSettings.subFolderDepth = 1;
-            thumbnailSettings.shuffle = false;
+                // サムネイルパネルの設定を初期化
+                thumbnailSettings.width = 150;
+                thumbnailSettings.height = 150;
+                thumbnailSettings.margin = 1;
+                thumbnailSettings.backgroundColor = Color.White;
+                thumbnailSettings.maxCount = 1000;
+                thumbnailSettings.subFolderSearch = false;
+                thumbnailSettings.subFolderDepth = 1;
+                thumbnailSettings.shuffle = false;
+            }
+            thumbnailPanelSettingControl.RefreshView();
             reloadThumbnail(null);
 
             // ドライブ一覧を走査してツリーに追加
@@ -158,8 +163,9 @@ namespace ImageViewer
                 thumbnailPanelSettingControl.Visible = false;
                 thumbnailSettingOpenButton.Text = "設定/Settings";
 
-                // 変更された設定内容でサムネイルビューをリロード
+                // 変更された設定内容を保存し、サムネイルビューをリロード
                 thumbnailPanelSettingControl.UpdateSettings();
+                Settings.saveSettings();
                 reloadThumbnail(nowSelectedTreeViewDir);
             }
             else {

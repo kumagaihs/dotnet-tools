@@ -11,8 +11,6 @@ using System.Windows.Forms;
 namespace ImageViewer {
     public partial class ThumbnailPanelSettingControl : UserControl {
 
-        private Settings.ThumbnailPanelSettings thumbnailSettings;
-
         public ThumbnailPanelSettingControl()
         {
             InitializeComponent();
@@ -20,7 +18,6 @@ namespace ImageViewer {
 
         private void ThumbnailPanelSettingControl_Load(object sender, EventArgs e)
         {
-            this.thumbnailSettings = Settings.getInstance().thumbnailPanelSettings;
             RefreshView();
         }
 
@@ -29,14 +26,15 @@ namespace ImageViewer {
         /// </summary>
         public void RefreshView()
         {
-            thumWidthTextBox.Text = this.thumbnailSettings.width.ToString();
-            thumHeightTextBox.Text = this.thumbnailSettings.height.ToString();
-            thumMarginTextBox.Text = this.thumbnailSettings.margin.ToString();
-            thumBgColorButton.BackColor = this.thumbnailSettings.backgroundColor;
-            thumMaxCountTextBox.Text = this.thumbnailSettings.maxCount.ToString();
-            thumSubFolderCheckBox.Checked = this.thumbnailSettings.subFolderSearch;
-            thumSubFolderDepthTextBox.Text = this.thumbnailSettings.subFolderDepth.ToString();
-            thumShuffleCheckBox.Checked = this.thumbnailSettings.shuffle;
+            Settings.ThumbnailPanelSettings thumbnailSettings = Settings.getInstance().thumbnailPanelSettings;
+            thumWidthTextBox.Text = thumbnailSettings.width.ToString();
+            thumHeightTextBox.Text = thumbnailSettings.height.ToString();
+            thumMarginTextBox.Text = thumbnailSettings.margin.ToString();
+            thumBgColorButton.BackColor = thumbnailSettings.backgroundColor;
+            thumMaxCountTextBox.Text = thumbnailSettings.maxCount.ToString();
+            thumSubFolderCheckBox.Checked = thumbnailSettings.subFolderSearch;
+            thumSubFolderDepthTextBox.Text = thumbnailSettings.subFolderDepth.ToString();
+            thumShuffleCheckBox.Checked = thumbnailSettings.shuffle;
         }
 
         /// <summary>
@@ -44,14 +42,15 @@ namespace ImageViewer {
         /// </summary>
         public void UpdateSettings()
         {
-            this.thumbnailSettings.width = int.Parse(thumWidthTextBox.Text);
-            this.thumbnailSettings.height = int.Parse(thumHeightTextBox.Text);
-            this.thumbnailSettings.margin = int.Parse(thumMarginTextBox.Text);
-            this.thumbnailSettings.backgroundColor = thumBgColorButton.BackColor;
-            this.thumbnailSettings.maxCount = int.Parse(thumMaxCountTextBox.Text);
-            this.thumbnailSettings.subFolderSearch = thumSubFolderCheckBox.Checked;
-            this.thumbnailSettings.subFolderDepth = int.Parse(thumSubFolderDepthTextBox.Text);
-            this.thumbnailSettings.shuffle = thumShuffleCheckBox.Checked;
+            Settings.ThumbnailPanelSettings thumbnailSettings = Settings.getInstance().thumbnailPanelSettings;
+            thumbnailSettings.width = int.Parse(thumWidthTextBox.Text);
+            thumbnailSettings.height = int.Parse(thumHeightTextBox.Text);
+            thumbnailSettings.margin = int.Parse(thumMarginTextBox.Text);
+            thumbnailSettings.backgroundColor = thumBgColorButton.BackColor;
+            thumbnailSettings.maxCount = int.Parse(thumMaxCountTextBox.Text);
+            thumbnailSettings.subFolderSearch = thumSubFolderCheckBox.Checked;
+            thumbnailSettings.subFolderDepth = int.Parse(thumSubFolderDepthTextBox.Text);
+            thumbnailSettings.shuffle = thumShuffleCheckBox.Checked;
         }
 
         /// <summary>
@@ -61,6 +60,8 @@ namespace ImageViewer {
         /// <param name="e"></param>
         private void thumBgColorButton_Click(object sender, EventArgs e)
         {
+            Settings.ThumbnailPanelSettings thumbnailSettings = Settings.getInstance().thumbnailPanelSettings;
+
             //ColorDialogクラスのインスタンスを作成
             ColorDialog cd = new ColorDialog();
 
