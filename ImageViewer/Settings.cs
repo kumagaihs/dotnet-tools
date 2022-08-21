@@ -12,6 +12,8 @@ namespace ImageViewer {
             public int width { set; get; }
             public int margin { set; get; }
             public Color backgroundColor { set; get; }
+            public Boolean subFolderSearch { set; get; }
+            public int subFolderDepth { set; get; }
             public Boolean shuffle { set; get; }
         }
 

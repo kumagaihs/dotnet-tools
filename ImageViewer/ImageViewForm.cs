@@ -33,18 +33,28 @@ namespace ImageViewer
             thumbnailSettings.height = 150;
             thumbnailSettings.margin = 1;
             thumbnailSettings.backgroundColor = Color.White;
+            thumbnailSettings.subFolderSearch = false;
+            thumbnailSettings.subFolderDepth = 1;
             thumbnailSettings.shuffle = false;
             reloadThumbnail(null);
 
             // ドライブ一覧を走査してツリーに追加
-            reloadFileTreeView(Environment.GetLogicalDrives());
+            reloadFileTreeView(getInitialDirectories());
 
             // カレントディレクトリを保存先パスに初期設定
             this.saveDirTextBox.Text = Environment.CurrentDirectory;
 
             // XXX : Debug
             //reloadFileTreeView(new string[] { @"C:\work" });
+        }
 
+        private string[] getInitialDirectories()
+        {
+            List<string> ret = new List<string>();
+            ret.Add(System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory));
+            ret.Add(System.Environment.GetFolderPath(Environment.SpecialFolder.Personal));
+            ret.AddRange(Environment.GetLogicalDrives());
+            return ret.ToArray();
         }
 
         /// <summary>
@@ -134,7 +144,7 @@ namespace ImageViewer
         {
             if (e.KeyCode == Keys.Enter) {
                 if (baseDirTextBox.Text.Trim().Length == 0) {
-                    reloadFileTreeView(Environment.GetLogicalDrives());
+                    reloadFileTreeView(getInitialDirectories());
                 }
                 else {
                     reloadFileTreeView(new String[] { baseDirTextBox.Text });
@@ -209,14 +219,21 @@ namespace ImageViewer
             if (dir == null) {
                 return;
             }
+            Console.WriteLine(">>>>>>>>>>>>>>> " + dir);
 
             // 処理中ディレクトリの更新
             this.nowSelectedTreeViewDir = dir;
 
             // ファイル一覧取得
-            List<String> files = Directory.GetFiles(dir).ToList<String>();
+            List<String> files = new List<string>();
+            findFiles(
+                dir,
+                0,
+                thumbnailSettings.subFolderSearch ? thumbnailSettings.subFolderDepth : 0,
+                files);
+
+            // ファイル一覧をシャッフル
             if (thumbnailSettings.shuffle) {
-                // ファイル一覧をシャッフル
                 Random rand = new Random();
                 files = files.OrderBy(_ => rand.Next()).ToList();
             }
@@ -262,6 +279,37 @@ namespace ImageViewer
                     }
                 }
             });
+        }
+
+        /// <summary>
+        /// 指定フォルダのファイル一覧を取得する
+        /// </summary>
+        /// <param name="curDir">フォルダ</param>
+        /// <param name="curDepth">固定でゼロを指定する。再帰呼び出し用パラメータ。</param>
+        /// <param name="maxDepth">サブフォルダを検索する深さ。-1は無制限。</param>
+        /// <param name="files">取得したファイル一覧を格納するリスト</param>
+        private void findFiles(string curDir, int curDepth, int maxDepth, List<string> files)
+        {
+            //TODO:大量フォルダを指定した際に、途中で検索を止められるようにする。
+
+            // ファイル一覧を取得
+            try {
+                files.AddRange(Directory.GetFiles(curDir).ToList<String>());
+            }
+            catch (Exception e) {
+            }
+
+            // サブフォルダ探索
+            if (maxDepth == -1 || curDepth < maxDepth) {
+                try {
+                    IEnumerable<string> subDirs = Directory.EnumerateDirectories(curDir, "*", SearchOption.TopDirectoryOnly);
+                    foreach (string subDir in subDirs) {
+                        findFiles(subDir, curDepth + 1, maxDepth, files);
+                    }
+                }
+                catch (Exception e) {
+                }
+            }
         }
 
         /// <summary>

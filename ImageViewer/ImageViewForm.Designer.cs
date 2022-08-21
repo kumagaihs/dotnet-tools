@@ -39,8 +39,8 @@ namespace ImageViewer
             this.saveDirLabel = new System.Windows.Forms.Label();
             this.thumbnailPanel = new System.Windows.Forms.Panel();
             this.saveDirSelectButton = new System.Windows.Forms.Button();
-            this.thumbnailPanelSettingControl = new ImageViewer.ThumbnailPanelSettingControl();
             this.thumRefreshButton = new System.Windows.Forms.Button();
+            this.thumbnailPanelSettingControl = new ImageViewer.ThumbnailPanelSettingControl();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
@@ -161,14 +161,6 @@ namespace ImageViewer
             this.saveDirSelectButton.UseVisualStyleBackColor = true;
             this.saveDirSelectButton.Click += new System.EventHandler(this.saveDirSelectButton_Click);
             // 
-            // thumbnailPanelSettingControl
-            // 
-            this.thumbnailPanelSettingControl.Location = new System.Drawing.Point(0, 24);
-            this.thumbnailPanelSettingControl.Name = "thumbnailPanelSettingControl";
-            this.thumbnailPanelSettingControl.Size = new System.Drawing.Size(360, 400);
-            this.thumbnailPanelSettingControl.TabIndex = 10;
-            this.thumbnailPanelSettingControl.Visible = false;
-            // 
             // thumRefreshButton
             // 
             this.thumRefreshButton.Image = ((System.Drawing.Image)(resources.GetObject("thumRefreshButton.Image")));
@@ -178,6 +170,14 @@ namespace ImageViewer
             this.thumRefreshButton.TabIndex = 13;
             this.thumRefreshButton.UseVisualStyleBackColor = true;
             this.thumRefreshButton.Click += new System.EventHandler(this.thumRefreshButton_Click);
+            // 
+            // thumbnailPanelSettingControl
+            // 
+            this.thumbnailPanelSettingControl.Location = new System.Drawing.Point(0, 24);
+            this.thumbnailPanelSettingControl.Name = "thumbnailPanelSettingControl";
+            this.thumbnailPanelSettingControl.Size = new System.Drawing.Size(400, 400);
+            this.thumbnailPanelSettingControl.TabIndex = 10;
+            this.thumbnailPanelSettingControl.Visible = false;
             // 
             // ImageView
             // 

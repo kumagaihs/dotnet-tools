@@ -44,12 +44,13 @@
             this.thumSubFolderDepthTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // thumShuffleCheckBox
             // 
             this.thumShuffleCheckBox.AutoSize = true;
-            this.thumShuffleCheckBox.Location = new System.Drawing.Point(197, 178);
+            this.thumShuffleCheckBox.Location = new System.Drawing.Point(197, 211);
             this.thumShuffleCheckBox.Name = "thumShuffleCheckBox";
             this.thumShuffleCheckBox.Size = new System.Drawing.Size(15, 14);
             this.thumShuffleCheckBox.TabIndex = 10;
@@ -137,7 +138,7 @@
             // 
             // thumShuffleLabel
             // 
-            this.thumShuffleLabel.Location = new System.Drawing.Point(9, 176);
+            this.thumShuffleLabel.Location = new System.Drawing.Point(9, 209);
             this.thumShuffleLabel.Name = "thumShuffleLabel";
             this.thumShuffleLabel.Size = new System.Drawing.Size(182, 19);
             this.thumShuffleLabel.TabIndex = 16;
@@ -180,7 +181,7 @@
             // 
             // thumSubFolderDepthLabel
             // 
-            this.thumSubFolderDepthLabel.Location = new System.Drawing.Point(218, 154);
+            this.thumSubFolderDepthLabel.Location = new System.Drawing.Point(243, 154);
             this.thumSubFolderDepthLabel.Name = "thumSubFolderDepthLabel";
             this.thumSubFolderDepthLabel.Size = new System.Drawing.Size(73, 19);
             this.thumSubFolderDepthLabel.TabIndex = 16;
@@ -189,7 +190,7 @@
             // 
             // thumSubFolderDepthTextBox
             // 
-            this.thumSubFolderDepthTextBox.Location = new System.Drawing.Point(297, 154);
+            this.thumSubFolderDepthTextBox.Location = new System.Drawing.Point(322, 154);
             this.thumSubFolderDepthTextBox.Name = "thumSubFolderDepthTextBox";
             this.thumSubFolderDepthTextBox.Size = new System.Drawing.Size(48, 19);
             this.thumSubFolderDepthTextBox.TabIndex = 17;
@@ -208,16 +209,27 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(218, 156);
+            this.label2.Location = new System.Drawing.Point(21, 175);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.Size = new System.Drawing.Size(273, 24);
             this.label2.TabIndex = 20;
-            this.label2.Text = "※未実装";
+            this.label2.Text = "＊大量のフォルダがあると動作が遅くなる場合があります。\r\n  Many folders may slow down the operation";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label3.Location = new System.Drawing.Point(312, 175);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 24);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "制限なし=-1\r\nNo limits=-1";
             // 
             // ThumbnailPanelSettingControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TitleShum);
@@ -238,7 +250,7 @@
             this.Controls.Add(this.thumSubFolderCheckBox);
             this.Controls.Add(this.thumShuffleCheckBox);
             this.Name = "ThumbnailPanelSettingControl";
-            this.Size = new System.Drawing.Size(360, 400);
+            this.Size = new System.Drawing.Size(400, 400);
             this.Load += new System.EventHandler(this.ThumbnailPanelSettingControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -266,5 +278,6 @@
         private System.Windows.Forms.TextBox thumSubFolderDepthTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
