@@ -53,7 +53,6 @@ namespace ImageViewer
         {
             List<string> ret = new List<string>();
             ret.Add(System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory));
-            ret.Add(System.Environment.GetFolderPath(Environment.SpecialFolder.Personal));
             ret.AddRange(Environment.GetLogicalDrives());
             return ret.ToArray();
         }
@@ -99,9 +98,9 @@ namespace ImageViewer
                     node.Nodes.Add(child);
                 }
             }
-            catch (IOException ie)
+            catch (Exception exception)
             {
-                MessageBox.Show(ie.Message, "選択エラー");
+                MessageBox.Show(exception.Message, "Error");
             }
 
         }
@@ -226,12 +225,9 @@ namespace ImageViewer
             this.nowSelectedTreeViewDir = dir;
 
             // ファイル一覧取得
-            List<String> files = new List<string>();
-            findFiles(
+            List<String> files = findFiles(
                 dir,
-                0,
-                thumbnailSettings.subFolderSearch ? thumbnailSettings.subFolderDepth : 0,
-                files);
+                thumbnailSettings.subFolderSearch ? thumbnailSettings.subFolderDepth : 0);
 
             // ファイル一覧をシャッフル
             if (thumbnailSettings.shuffle) {
@@ -286,13 +282,37 @@ namespace ImageViewer
         /// <summary>
         /// 指定フォルダのファイル一覧を取得する
         /// </summary>
+        /// <param name="dir">対象フォルダ</param>
+        /// <param name="maxDepth">サブフォルダを探索する階層の深さ</param>
+        /// <returns>ファイル一覧</returns>
+        private List<string> findFiles(string dir, int maxDepth)
+        {
+            List<string> files = new List<string>();
+            int curDirCnt = 0;
+            if ( ! findFiles(dir, 0, maxDepth, ref curDirCnt, 2000, files)) {
+                MessageBox.Show(
+                    "サブフォルダ数が2,000を超えたため、処理を中断しました。\r\nThe process is interrupted because the number of subfolders has exceeded 2,000.",
+                    "処理中断/Break in processing");
+            }
+            return files;
+        }
+
+        /// <summary>
+        /// 指定フォルダのファイル一覧を取得する
+        /// </summary>
         /// <param name="curDir">フォルダ</param>
         /// <param name="curDepth">固定でゼロを指定する。再帰呼び出し用パラメータ。</param>
         /// <param name="maxDepth">サブフォルダを検索する深さ。-1は無制限。</param>
+        /// <param name="curDirCnt">固定でゼロを指定する。再帰呼び出し用パラメータ。</param>
+        /// <param name="maxDirCnt">探索する最大フォルダ数</param>
         /// <param name="files">取得したファイル一覧を格納するリスト</param>
-        private void findFiles(string curDir, int curDepth, int maxDepth, List<string> files)
+        /// <returns>全てのフォルダを探索し終わった場合はtrue、最大フォルダ数の制限で途中で探索を中断した場合はfalse</returns>
+        private bool findFiles(string curDir, int curDepth, int maxDepth, ref int curDirCnt, int maxDirCnt, List<string> files)
         {
-            //TODO:大量フォルダを指定した際に、途中で検索を止められるようにする。
+            // サブフォルダ数がmaxDirCntを超えた場合は処理中断
+            if (maxDirCnt <= curDirCnt) {
+                return false;
+            }
 
             // ファイル一覧を取得
             try {
@@ -306,12 +326,19 @@ namespace ImageViewer
                 try {
                     IEnumerable<string> subDirs = Directory.EnumerateDirectories(curDir, "*", SearchOption.TopDirectoryOnly);
                     foreach (string subDir in subDirs) {
-                        findFiles(subDir, curDepth + 1, maxDepth, files);
+                        curDirCnt++;
+                        if ( ! findFiles(subDir, curDepth + 1, maxDepth, ref curDirCnt, maxDirCnt, files)) {
+                            // ディレクトリの最大数に達したため、途中で処理終了
+                            return false;
+                        }
                     }
                 }
                 catch (Exception e) {
                 }
             }
+
+            // 探索がすべて終了
+            return true;
         }
 
         /// <summary>
