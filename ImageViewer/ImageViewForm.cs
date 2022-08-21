@@ -33,6 +33,7 @@ namespace ImageViewer
             thumbnailSettings.height = 150;
             thumbnailSettings.margin = 1;
             thumbnailSettings.backgroundColor = Color.White;
+            thumbnailSettings.maxCount = 1000;
             thumbnailSettings.subFolderSearch = false;
             thumbnailSettings.subFolderDepth = 1;
             thumbnailSettings.shuffle = false;
@@ -246,7 +247,8 @@ namespace ImageViewer
                 int marginY = thumbnailSettings.margin;
                 int col = 0;
                 int row = 0;
-                foreach (String file in files) {
+                for (int i = 0; i < thumbnailSettings.maxCount; i++) {
+                    string file = files[i];
                     try {
                         if (nowSelectedTreeViewDir != dir)
                         {

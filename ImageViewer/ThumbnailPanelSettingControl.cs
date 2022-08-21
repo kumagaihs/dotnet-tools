@@ -33,6 +33,7 @@ namespace ImageViewer {
             thumHeightTextBox.Text = this.thumbnailSettings.height.ToString();
             thumMarginTextBox.Text = this.thumbnailSettings.margin.ToString();
             thumBgColorButton.BackColor = this.thumbnailSettings.backgroundColor;
+            thumMaxCountTextBox.Text = this.thumbnailSettings.maxCount.ToString();
             thumSubFolderCheckBox.Checked = this.thumbnailSettings.subFolderSearch;
             thumSubFolderDepthTextBox.Text = this.thumbnailSettings.subFolderDepth.ToString();
             thumShuffleCheckBox.Checked = this.thumbnailSettings.shuffle;
@@ -47,6 +48,7 @@ namespace ImageViewer {
             this.thumbnailSettings.height = int.Parse(thumHeightTextBox.Text);
             this.thumbnailSettings.margin = int.Parse(thumMarginTextBox.Text);
             this.thumbnailSettings.backgroundColor = thumBgColorButton.BackColor;
+            this.thumbnailSettings.maxCount = int.Parse(thumMaxCountTextBox.Text);
             this.thumbnailSettings.subFolderSearch = thumSubFolderCheckBox.Checked;
             this.thumbnailSettings.subFolderDepth = int.Parse(thumSubFolderDepthTextBox.Text);
             this.thumbnailSettings.shuffle = thumShuffleCheckBox.Checked;

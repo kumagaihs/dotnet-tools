@@ -37,12 +37,11 @@
             this.thumBgColorLabel = new System.Windows.Forms.Label();
             this.thumShuffleLabel = new System.Windows.Forms.Label();
             this.thumMaxCountLabel = new System.Windows.Forms.Label();
-            this.thumMaxCountLabelTextBox = new System.Windows.Forms.TextBox();
+            this.thumMaxCountTextBox = new System.Windows.Forms.TextBox();
             this.thumSubFolderCheckBox = new System.Windows.Forms.CheckBox();
             this.thumSubFolderLabel = new System.Windows.Forms.Label();
             this.thumSubFolderDepthLabel = new System.Windows.Forms.Label();
             this.thumSubFolderDepthTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -154,12 +153,12 @@
             this.thumMaxCountLabel.Text = "画像の最大表示数/Max count";
             this.thumMaxCountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // thumMaxCountLabelTextBox
+            // thumMaxCountTextBox
             // 
-            this.thumMaxCountLabelTextBox.Location = new System.Drawing.Point(197, 131);
-            this.thumMaxCountLabelTextBox.Name = "thumMaxCountLabelTextBox";
-            this.thumMaxCountLabelTextBox.Size = new System.Drawing.Size(48, 19);
-            this.thumMaxCountLabelTextBox.TabIndex = 17;
+            this.thumMaxCountTextBox.Location = new System.Drawing.Point(197, 131);
+            this.thumMaxCountTextBox.Name = "thumMaxCountTextBox";
+            this.thumMaxCountTextBox.Size = new System.Drawing.Size(48, 19);
+            this.thumMaxCountTextBox.TabIndex = 17;
             // 
             // thumSubFolderCheckBox
             // 
@@ -195,16 +194,6 @@
             this.thumSubFolderDepthTextBox.Size = new System.Drawing.Size(48, 19);
             this.thumSubFolderDepthTextBox.TabIndex = 17;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(251, 134);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "※未実装";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -231,10 +220,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.TitleShum);
             this.Controls.Add(this.thumSubFolderDepthTextBox);
-            this.Controls.Add(this.thumMaxCountLabelTextBox);
+            this.Controls.Add(this.thumMaxCountTextBox);
             this.Controls.Add(this.thumMarginTextBox);
             this.Controls.Add(this.thumSubFolderDepthLabel);
             this.Controls.Add(this.thumSubFolderLabel);
@@ -271,12 +259,11 @@
         private System.Windows.Forms.Label thumBgColorLabel;
         private System.Windows.Forms.Label thumShuffleLabel;
         private System.Windows.Forms.Label thumMaxCountLabel;
-        private System.Windows.Forms.TextBox thumMaxCountLabelTextBox;
+        private System.Windows.Forms.TextBox thumMaxCountTextBox;
         private System.Windows.Forms.CheckBox thumSubFolderCheckBox;
         private System.Windows.Forms.Label thumSubFolderLabel;
         private System.Windows.Forms.Label thumSubFolderDepthLabel;
         private System.Windows.Forms.TextBox thumSubFolderDepthTextBox;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
     }
