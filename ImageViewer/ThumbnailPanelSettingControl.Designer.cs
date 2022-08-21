@@ -36,30 +36,37 @@
             this.TitleShum = new System.Windows.Forms.Label();
             this.thumBgColorLabel = new System.Windows.Forms.Label();
             this.thumShuffleLabel = new System.Windows.Forms.Label();
+            this.thumMaxCountLabel = new System.Windows.Forms.Label();
+            this.thumMaxCountLabelTextBox = new System.Windows.Forms.TextBox();
+            this.thumSubFolderCheckBox = new System.Windows.Forms.CheckBox();
+            this.thumSubFolderLabel = new System.Windows.Forms.Label();
+            this.thumSubFolderDepthLabel = new System.Windows.Forms.Label();
+            this.thumSubFolderDepthTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // thumShuffleCheckBox
             // 
             this.thumShuffleCheckBox.AutoSize = true;
-            this.thumShuffleCheckBox.Location = new System.Drawing.Point(169, 131);
+            this.thumShuffleCheckBox.Location = new System.Drawing.Point(197, 178);
             this.thumShuffleCheckBox.Name = "thumShuffleCheckBox";
-            this.thumShuffleCheckBox.Size = new System.Drawing.Size(60, 16);
+            this.thumShuffleCheckBox.Size = new System.Drawing.Size(15, 14);
             this.thumShuffleCheckBox.TabIndex = 10;
-            this.thumShuffleCheckBox.Text = "Shuffle";
             this.thumShuffleCheckBox.UseVisualStyleBackColor = true;
             // 
             // thumMarginTextBox
             // 
-            this.thumMarginTextBox.Location = new System.Drawing.Point(169, 79);
+            this.thumMarginTextBox.Location = new System.Drawing.Point(197, 79);
             this.thumMarginTextBox.Name = "thumMarginTextBox";
             this.thumMarginTextBox.Size = new System.Drawing.Size(48, 19);
             this.thumMarginTextBox.TabIndex = 17;
             // 
             // thumMarginLabel
             // 
-            this.thumMarginLabel.Location = new System.Drawing.Point(3, 82);
+            this.thumMarginLabel.Location = new System.Drawing.Point(9, 79);
             this.thumMarginLabel.Name = "thumMarginLabel";
-            this.thumMarginLabel.Size = new System.Drawing.Size(152, 19);
+            this.thumMarginLabel.Size = new System.Drawing.Size(182, 19);
             this.thumMarginLabel.TabIndex = 16;
             this.thumMarginLabel.Text = "画像間の余白/Margin";
             this.thumMarginLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -67,7 +74,7 @@
             // thumBgColorButton
             // 
             this.thumBgColorButton.BackColor = System.Drawing.SystemColors.Control;
-            this.thumBgColorButton.Location = new System.Drawing.Point(169, 104);
+            this.thumBgColorButton.Location = new System.Drawing.Point(197, 104);
             this.thumBgColorButton.Name = "thumBgColorButton";
             this.thumBgColorButton.Size = new System.Drawing.Size(123, 21);
             this.thumBgColorButton.TabIndex = 15;
@@ -77,25 +84,25 @@
             // 
             // thumHeightLabel
             // 
-            this.thumHeightLabel.Location = new System.Drawing.Point(3, 54);
+            this.thumHeightLabel.Location = new System.Drawing.Point(9, 54);
             this.thumHeightLabel.Name = "thumHeightLabel";
-            this.thumHeightLabel.Size = new System.Drawing.Size(152, 19);
+            this.thumHeightLabel.Size = new System.Drawing.Size(182, 19);
             this.thumHeightLabel.TabIndex = 11;
             this.thumHeightLabel.Text = "画像高さ/Height";
             this.thumHeightLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // thumWidthLabel
             // 
-            this.thumWidthLabel.Location = new System.Drawing.Point(3, 29);
+            this.thumWidthLabel.Location = new System.Drawing.Point(9, 29);
             this.thumWidthLabel.Name = "thumWidthLabel";
-            this.thumWidthLabel.Size = new System.Drawing.Size(152, 19);
+            this.thumWidthLabel.Size = new System.Drawing.Size(182, 19);
             this.thumWidthLabel.TabIndex = 12;
             this.thumWidthLabel.Text = "画像横幅/Width";
             this.thumWidthLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // thumHeightTextBox
             // 
-            this.thumHeightTextBox.Location = new System.Drawing.Point(169, 54);
+            this.thumHeightTextBox.Location = new System.Drawing.Point(197, 54);
             this.thumHeightTextBox.MinimumSize = new System.Drawing.Size(4, 19);
             this.thumHeightTextBox.Name = "thumHeightTextBox";
             this.thumHeightTextBox.Size = new System.Drawing.Size(48, 19);
@@ -103,7 +110,7 @@
             // 
             // thumWidthTextBox
             // 
-            this.thumWidthTextBox.Location = new System.Drawing.Point(169, 29);
+            this.thumWidthTextBox.Location = new System.Drawing.Point(197, 29);
             this.thumWidthTextBox.MinimumSize = new System.Drawing.Size(4, 19);
             this.thumWidthTextBox.Name = "thumWidthTextBox";
             this.thumWidthTextBox.Size = new System.Drawing.Size(48, 19);
@@ -121,29 +128,106 @@
             // 
             // thumBgColorLabel
             // 
-            this.thumBgColorLabel.Location = new System.Drawing.Point(3, 106);
+            this.thumBgColorLabel.Location = new System.Drawing.Point(9, 106);
             this.thumBgColorLabel.Name = "thumBgColorLabel";
-            this.thumBgColorLabel.Size = new System.Drawing.Size(152, 19);
+            this.thumBgColorLabel.Size = new System.Drawing.Size(182, 19);
             this.thumBgColorLabel.TabIndex = 16;
-            this.thumBgColorLabel.Text = "背景色/Background Color";
+            this.thumBgColorLabel.Text = "背景色/Background color";
             this.thumBgColorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // thumShuffleLabel
             // 
-            this.thumShuffleLabel.Location = new System.Drawing.Point(3, 129);
+            this.thumShuffleLabel.Location = new System.Drawing.Point(9, 176);
             this.thumShuffleLabel.Name = "thumShuffleLabel";
-            this.thumShuffleLabel.Size = new System.Drawing.Size(152, 19);
+            this.thumShuffleLabel.Size = new System.Drawing.Size(182, 19);
             this.thumShuffleLabel.TabIndex = 16;
             this.thumShuffleLabel.Text = "画像をシャッフル/Shuffle";
             this.thumShuffleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // thumMaxCountLabel
+            // 
+            this.thumMaxCountLabel.Location = new System.Drawing.Point(9, 131);
+            this.thumMaxCountLabel.Name = "thumMaxCountLabel";
+            this.thumMaxCountLabel.Size = new System.Drawing.Size(182, 19);
+            this.thumMaxCountLabel.TabIndex = 16;
+            this.thumMaxCountLabel.Text = "画像の最大表示数/Max count";
+            this.thumMaxCountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // thumMaxCountLabelTextBox
+            // 
+            this.thumMaxCountLabelTextBox.Location = new System.Drawing.Point(197, 131);
+            this.thumMaxCountLabelTextBox.Name = "thumMaxCountLabelTextBox";
+            this.thumMaxCountLabelTextBox.Size = new System.Drawing.Size(48, 19);
+            this.thumMaxCountLabelTextBox.TabIndex = 17;
+            // 
+            // thumSubFolderCheckBox
+            // 
+            this.thumSubFolderCheckBox.AutoSize = true;
+            this.thumSubFolderCheckBox.Location = new System.Drawing.Point(197, 156);
+            this.thumSubFolderCheckBox.Name = "thumSubFolderCheckBox";
+            this.thumSubFolderCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.thumSubFolderCheckBox.TabIndex = 10;
+            this.thumSubFolderCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // thumSubFolderLabel
+            // 
+            this.thumSubFolderLabel.Location = new System.Drawing.Point(9, 154);
+            this.thumSubFolderLabel.Name = "thumSubFolderLabel";
+            this.thumSubFolderLabel.Size = new System.Drawing.Size(182, 19);
+            this.thumSubFolderLabel.TabIndex = 16;
+            this.thumSubFolderLabel.Text = "サブフォルダも表示/View sub folder";
+            this.thumSubFolderLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // thumSubFolderDepthLabel
+            // 
+            this.thumSubFolderDepthLabel.Location = new System.Drawing.Point(218, 154);
+            this.thumSubFolderDepthLabel.Name = "thumSubFolderDepthLabel";
+            this.thumSubFolderDepthLabel.Size = new System.Drawing.Size(73, 19);
+            this.thumSubFolderDepthLabel.TabIndex = 16;
+            this.thumSubFolderDepthLabel.Text = "階層/Depth";
+            this.thumSubFolderDepthLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // thumSubFolderDepthTextBox
+            // 
+            this.thumSubFolderDepthTextBox.Location = new System.Drawing.Point(297, 154);
+            this.thumSubFolderDepthTextBox.Name = "thumSubFolderDepthTextBox";
+            this.thumSubFolderDepthTextBox.Size = new System.Drawing.Size(48, 19);
+            this.thumSubFolderDepthTextBox.TabIndex = 17;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(251, 134);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "※未実装";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(218, 156);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "※未実装";
             // 
             // ThumbnailPanelSettingControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.TitleShum);
+            this.Controls.Add(this.thumSubFolderDepthTextBox);
+            this.Controls.Add(this.thumMaxCountLabelTextBox);
             this.Controls.Add(this.thumMarginTextBox);
+            this.Controls.Add(this.thumSubFolderDepthLabel);
+            this.Controls.Add(this.thumSubFolderLabel);
             this.Controls.Add(this.thumShuffleLabel);
+            this.Controls.Add(this.thumMaxCountLabel);
             this.Controls.Add(this.thumBgColorLabel);
             this.Controls.Add(this.thumMarginLabel);
             this.Controls.Add(this.thumBgColorButton);
@@ -151,6 +235,7 @@
             this.Controls.Add(this.thumWidthLabel);
             this.Controls.Add(this.thumHeightTextBox);
             this.Controls.Add(this.thumWidthTextBox);
+            this.Controls.Add(this.thumSubFolderCheckBox);
             this.Controls.Add(this.thumShuffleCheckBox);
             this.Name = "ThumbnailPanelSettingControl";
             this.Size = new System.Drawing.Size(360, 400);
@@ -173,5 +258,13 @@
         private System.Windows.Forms.Label TitleShum;
         private System.Windows.Forms.Label thumBgColorLabel;
         private System.Windows.Forms.Label thumShuffleLabel;
+        private System.Windows.Forms.Label thumMaxCountLabel;
+        private System.Windows.Forms.TextBox thumMaxCountLabelTextBox;
+        private System.Windows.Forms.CheckBox thumSubFolderCheckBox;
+        private System.Windows.Forms.Label thumSubFolderLabel;
+        private System.Windows.Forms.Label thumSubFolderDepthLabel;
+        private System.Windows.Forms.TextBox thumSubFolderDepthTextBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
