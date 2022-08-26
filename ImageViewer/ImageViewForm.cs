@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -322,6 +323,16 @@ namespace ImageViewer
 
             // ファイル一覧を取得
             try {
+/* ※これだとシャッフルの場合に全ての画像でシャッフルできないので無効化する。
+                // 拡張子「jpg」「png」「gif」等の確実に画像と思われるファイルが最大表示数を超えたら探査終了
+                int imageCount = files.FindAll(s => Regex.IsMatch(s.ToLower(), "(\\.jpg|\\.jpeg|\\.png|\\.gif|\\.bmp|\\.wmf|\\.tif|\\.tiff|\\.ico)$")).Count();
+                if (imageCount > Settings.getInstance().thumbnailPanelSettings.maxCount) {
+                    MessageBox.Show(
+                        "file limit" + imageCount,
+                        "aaa");
+                    return true;
+                }
+*/
                 files.AddRange(Directory.GetFiles(curDir).ToList<String>());
             }
             catch (Exception e) {
